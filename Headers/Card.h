@@ -17,4 +17,5 @@ public:
 		std::string _pin, std::string _secret, std::string _phone): key(_key), number(_number),
 		date(_date), cvc(_cvc), owner(_owner), pin(_pin), secret(_secret), phone(_phone) {}
 	Card(std::string xmlString);
+	Card(){}
 };

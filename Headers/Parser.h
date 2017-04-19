@@ -12,4 +12,6 @@ public:
 
 	void Parse();
 	void Wrap(Data *data);
+private:
+	std::string userDataToString(Data *data);
 };
