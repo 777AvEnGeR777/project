@@ -1,3 +1,4 @@
+#pragma once
 #include "IWrappable.h"
 
 class Account: IWrappable {
@@ -11,4 +12,5 @@ public:
 	Account(std::string _key, std::string _login, std::string _password, std::string _comment):
 		key(_key), login(_login), password(_password), comment(_comment) {}
 	Account(std::string xmlString);
+	Account():key(""), login(""), password(""), comment(""){};
 };

@@ -1,5 +1,6 @@
+#pragma once
 #include <string>
-#include "cryptolib.h"
+#include "cryptopp565\cryptlib.h"
 #include "cryptopp565\sha.h"
 #include "cryptopp565\aes.h"
 #include "cryptopp565\base64.h"

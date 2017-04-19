@@ -1,8 +1,9 @@
 #include "Data.h"
+#include "Parser.h"
 
 void Data::Save() {
-	// TODO
-	// Parser.Wrap();
+	Parser p;
+	p.Wrap(this);
 }
 
 Data::Data() {
