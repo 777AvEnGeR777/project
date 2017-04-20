@@ -15,8 +15,58 @@ Parser::Parser() {
 	
 }
 
-void Parser::Parse() {
+void Parser::Parse(Data *data) {
+	std::string s_data;
 
+	XMLDocument doc;
+	XMLError error = doc.LoadFile("data.xml");
+	if (error != tinyxml2::XML_SUCCESS) return;
+
+
+	XMLNode * pRoot = doc.FirstChild();
+	XMLElement * masterHash = pRoot->FirstChildElement("master");
+	XMLElement * raw_data = pRoot->FirstChildElement("data");
+	
+	(*data).masterHash = masterHash->GetText();
+	s_data = raw_data->GetText();
+	s_data = Encryptor::Decrypt(s_data);
+	
+	XMLDocument tmp;
+	tmp.Parse(s_data.c_str());
+	
+	XMLNode  *accountsNode = tmp.FirstChildElement("accounts");
+	XMLNode  *cardsNode = tmp.FirstChildElement("cards");
+
+	std::string key;
+	for (XMLNode* child = accountsNode->FirstChild(); child != NULL; child = child->NextSibling())
+	{
+		key = child->FirstChildElement("key")->GetText();
+		
+		(*data).accountList[key] = Account(
+			key,
+			child->FirstChildElement("login")->GetText(),
+			child->FirstChildElement("password")->GetText(),
+			child->FirstChildElement("comment")->GetText()
+		);
+	}
+
+	for (XMLNode* child = cardsNode->FirstChild(); child != NULL; child = child->NextSibling())
+	{
+		key = child->FirstChildElement("key")->GetText();
+
+		(*data).cardList[key] = Card(
+			key,
+			child->FirstChildElement("number")->GetText(),
+			child->FirstChildElement("date")->GetText(),
+			child->FirstChildElement("cvc")->GetText(),
+			child->FirstChildElement("owner")->GetText(),
+			child->FirstChildElement("pin")->GetText(),
+			child->FirstChildElement("secret")->GetText(),
+			child->FirstChildElement("phone")->GetText()
+		);
+
+	}
+	
 }
 
 void Parser::Wrap(Data *data) {
@@ -37,7 +87,6 @@ void Parser::Wrap(Data *data) {
 	proot->InsertEndChild(xml_data);
 
 	doc.SaveFile("data.xml");
-
 
 }
 
@@ -96,6 +145,10 @@ std::string Parser::userDataToString(Data *data){
 			el = tmp.NewElement("pin");
 			el->SetText(iter->second.pin.c_str());
 			card->InsertEndChild(el);	
+
+			el = tmp.NewElement("owner");
+			el->SetText(iter->second.owner.c_str());
+			card->InsertEndChild(el);
 
 			el = tmp.NewElement("phone");
 			el->SetText(iter->second.phone.c_str());

@@ -7,6 +7,6 @@ void Data::Save() {
 }
 
 Data::Data() {
-	// TODO
-	// Parser.Parse();
+	Parser p;
+	p.Parse(this);
 }

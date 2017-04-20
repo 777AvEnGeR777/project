@@ -10,7 +10,7 @@ class Parser {
 public:
 	Parser();
 
-	void Parse();
+	void Parse(Data *data);
 	void Wrap(Data *data);
 private:
 	std::string userDataToString(Data *data);
