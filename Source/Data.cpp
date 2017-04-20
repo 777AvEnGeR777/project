@@ -5,11 +5,11 @@ std::map<std::string,Card> Data::cardList;
 std::string Data::masterHash;
 
 void Data::Save() {
-	// TODO
-	// Parser.Wrap();
+	Parser p;
+	p.Wrap();
 }
 
-Data::Data() {
-	// TODO
-	// Parser.Parse();
+void Data::Init() {
+	Parser p;
+	p.Parse();
 }
