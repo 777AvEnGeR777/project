@@ -12,6 +12,7 @@ TARGET = CPPProject
 TEMPLATE = app
 
 
+
 SOURCES += main.cpp\
         mainwindow.cpp \
     authwindow.cpp \
@@ -32,3 +33,29 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui \
     authwindow.ui
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/libs/release/ -lcryptlib
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/libs/debug/ -lcryptlib
+else:unix: LIBS += -L$$PWD/libs/ -lcryptlib
+
+INCLUDEPATH += $$PWD/libs/Debug
+DEPENDPATH += $$PWD/libs/Debug
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/libs/release/libcryptlib.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/libs/debug/libcryptlib.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/libs/release/cryptlib.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/libs/debug/cryptlib.lib
+else:unix: PRE_TARGETDEPS += $$PWD/libs/libcryptlib.a
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/libs/release/ -ltinyxml2
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/libs/debug/ -ltinyxml2
+else:unix: LIBS += -L$$PWD/libs/ -ltinyxml2
+
+INCLUDEPATH += $$PWD/libs/Debug
+DEPENDPATH += $$PWD/libs/Debug
+
+win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/libs/release/libtinyxml2.a
+else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/libs/debug/libtinyxml2.a
+else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/libs/release/tinyxml2.lib
+else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/libs/debug/tinyxml2.lib
+else:unix: PRE_TARGETDEPS += $$PWD/libs/libtinyxml2.a
