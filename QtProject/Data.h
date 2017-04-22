@@ -6,12 +6,15 @@
 
 class Data {
 public:
-	static Data* Instance();
+    static Data& Instance();
     std::map<std::string, Account> accountList;
 	std::map<std::string,Card> cardList;
 	std::string masterHash;
 	void Save();
     void GetData();
+    void GetMaster();
 private:
-	static Data *instance;
+    Data() {}
+    Data(const Data&);
+    Data& operator=(Data&);
 };

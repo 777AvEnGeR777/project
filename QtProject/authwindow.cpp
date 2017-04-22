@@ -12,7 +12,9 @@ AuthWindow::AuthWindow(QWidget *parent) :
     connect(ui->buttonLogin, SIGNAL(clicked(bool)), this, SLOT(Authentication()));
     connect(ui->buttonCreateMaster, SIGNAL(clicked(bool)), this, SLOT(CreateMaster()));
     connect(ui->editNewMaster, SIGNAL(textChanged(QString)), this, SLOT(PasswordStrengthWatcher()));
-    std::string masterHash = Data::Instance()->masterHash;
+
+    Data::Instance().GetMaster();
+    std::string masterHash = Data::Instance().masterHash;
     if(masterHash.empty())
         ui->groupLogin->hide();
     else
@@ -27,14 +29,14 @@ AuthWindow::~AuthWindow()
 void AuthWindow::Authentication()
 {
     std::string password = ui->editMaster->text().toStdString();
-    std::string passwordHash = Encryptor::Instance()->Hash(password);
+    std::string passwordHash = Encryptor::Instance().Hash(password);
 
-    if(passwordHash == Data::Instance()->masterHash)
+    if(passwordHash == Data::Instance().masterHash)
     {
         authResult = true;
         attempts = 3;
-        Encryptor::Instance()->DerieveKey(password);
-        Data::Instance()->GetData();
+        Encryptor::Instance().DerieveKey(password);
+        Data::Instance().GetData();
         close();
     }
     else
@@ -60,11 +62,11 @@ void AuthWindow::CreateMaster()
     }
     else
     {
-        Encryptor::Instance()->DerieveKey(password.toStdString());
-        std::string hash = Encryptor::Instance()->Hash(password.toStdString());
-        Data::Instance()->GetData();
-        Data::Instance()->masterHash = hash;
-        Data::Instance()->Save();
+        Encryptor::Instance().DerieveKey(password.toStdString());
+        std::string hash = Encryptor::Instance().Hash(password.toStdString());
+        Data::Instance().GetData();
+        Data::Instance().masterHash = hash;
+        Data::Instance().Save();
         authResult = true;
         close();
     }
@@ -74,7 +76,7 @@ void AuthWindow::CreateMaster()
 void AuthWindow::PasswordStrengthWatcher()
 {
     std::string password = ui->editNewMaster->text().toStdString();
-    PasswordStrength strength =PasswordStrengthChecker::Instance()->CheckPasswordStrength(password);
+    PasswordStrength strength =PasswordStrengthChecker::Instance().CheckPasswordStrength(password);
     QPalette pallete = ui->labelPasswordStrengthLevel->palette();
     switch (strength) {
         case NO_PASSWORD:

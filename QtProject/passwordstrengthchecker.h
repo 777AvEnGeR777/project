@@ -7,10 +7,13 @@
 class PasswordStrengthChecker
 {
 public:
-    static PasswordStrengthChecker* Instance();
+    static PasswordStrengthChecker& Instance();
     PasswordStrength CheckPasswordStrength(const std::string &password);
 private:
-    static PasswordStrengthChecker* instance;
+    PasswordStrengthChecker() {}
+    PasswordStrengthChecker(const PasswordStrengthChecker&);
+    PasswordStrengthChecker& operator=(PasswordStrengthChecker&);
+
     int CalculateCharset(const std::string& password);
     PasswordStrength CalculateStrength(int charset, const std::string &password);
 };

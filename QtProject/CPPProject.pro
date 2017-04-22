@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     Data.cpp \
     Encryptor.cpp \
     Parser.cpp \
-    passwordstrengthchecker.cpp
+    passwordstrengthchecker.cpp \
+    passwordgenerator.cpp
 
 HEADERS  += mainwindow.h \
     authwindow.h \
@@ -32,7 +33,8 @@ HEADERS  += mainwindow.h \
     IWrappable.h \
     Parser.h \
     passwordstrengthchecker.h \
-    enums.h
+    enums.h \
+    passwordgenerator.h
 
 FORMS    += mainwindow.ui \
     authwindow.ui

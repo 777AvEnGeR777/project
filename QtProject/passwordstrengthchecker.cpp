@@ -1,21 +1,17 @@
 #include "passwordstrengthchecker.h"
 
-PasswordStrengthChecker* PasswordStrengthChecker::instance = nullptr;
-
-PasswordStrengthChecker* PasswordStrengthChecker::Instance()
+PasswordStrengthChecker &PasswordStrengthChecker::Instance()
 {
-    if(instance == nullptr) {
-        instance = new PasswordStrengthChecker();
-    }
+    static PasswordStrengthChecker instance;
     return instance;
 }
 
 int PasswordStrengthChecker::CalculateCharset(const std::string &password)
 {
-    std::string alpha = "abcdefghijklmnopqrstuvwxyz";
-    std::string upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    std::string upper_punct = "~`!@#$%^&*()-_+=";
-    std::string digits = "1234567890";
+    const std::string alpha = "abcdefghijklmnopqrstuvwxyz";
+    const std::string upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const std::string upper_punct = "~`!@#$%^&*()-_+=";
+    const std::string digits = "1234567890";
 
     int totalChars = 0x7f - 0x20;
     int alphaChars = alpha.length();
@@ -31,7 +27,7 @@ int PasswordStrengthChecker::CalculateCharset(const std::string &password)
     bool fOther = false;
     int charset = 0;
 
-    for(int i = 0; i < password.length(); i++) {
+    for(unsigned int i = 0; i < password.length(); i++) {
         char character = password[i];
 
         if(!fAlpha && alpha.find(character) != std::string::npos) {

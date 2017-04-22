@@ -8,13 +8,15 @@
 
 class Encryptor {
 public:
-	static Encryptor* Instance();
+    static Encryptor& Instance();
 	std::string Encrypt(std::string str);
 	std::string Decrypt(std::string str);
 	std::string Hash(std::string str);
 	void DerieveKey(std::string password);
 private:
-	static Encryptor* instance;
+    Encryptor() {}
+    Encryptor(const Encryptor&);
+    Encryptor& operator=(Encryptor&);
 	static byte secretKey[CryptoPP::AES::MAX_KEYLENGTH];
 	static const byte iv[CryptoPP::AES::BLOCKSIZE];
 };
