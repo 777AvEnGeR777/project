@@ -1,6 +1,6 @@
 #include "Data.h"
 
-Data* Data::instance = NULL;
+Data* Data::instance = nullptr;
 
 void Data::Save() {
 	Parser p;
@@ -8,7 +8,7 @@ void Data::Save() {
 }
 
 Data* Data::Instance() {
-	if(instance == NULL) {
+    if(instance == nullptr) {
 		instance = new Data();
 		Parser p;
 		p.Parse();

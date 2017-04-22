@@ -4,10 +4,10 @@ byte Encryptor::secretKey[CryptoPP::AES::MAX_KEYLENGTH] = {0};
 const byte Encryptor::iv[CryptoPP::AES::BLOCKSIZE] = { 17, 169, 134, 74, 155, 98, 110, 24,
 	237, 60, 198, 177, 86, 74, 193, 8 };
 
-Encryptor* Encryptor::instance = NULL;
+Encryptor* Encryptor::instance = nullptr;
 
 Encryptor* Encryptor::Instance() {
-	if(instance == NULL) {
+    if(instance == nullptr) {
 		instance = new Encryptor();
 	}
 	return instance;

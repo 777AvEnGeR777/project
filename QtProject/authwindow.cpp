@@ -11,8 +11,8 @@ AuthWindow::AuthWindow(QWidget *parent) :
     authResult = false;
     attempts = 3;
 
-    connect(ui->buttonLogin, SIGNAL(clicked(bool), this, SLOT(Authentication());
-    connect(ui->buttonCreateMaster, SIGNAL(clicked(bool), this, SLOT(CreateMaster());
+    connect(ui->buttonLogin, SIGNAL(clicked(bool)), this, SLOT(Authentication()));
+    connect(ui->buttonCreateMaster, SIGNAL(clicked(bool)), this, SLOT(CreateMaster()));
 
     std::string masterHash = Data::Instance()->masterHash;
     if(masterHash.empty())
@@ -28,8 +28,8 @@ AuthWindow::~AuthWindow()
 
 void AuthWindow::Authentication()
 {
-    password = ui->editMaster->text().toStdString();
-    passwordHash = Encryptor::Instance()->Hash(password);
+    std::string password = ui->editMaster->text().toStdString();
+    std::string passwordHash = Encryptor::Instance()->Hash(password);
 
     if(passwordHash == Data::Instance()->masterHash)
     {
@@ -41,7 +41,7 @@ void AuthWindow::Authentication()
         attempts--;
         if(attempts == 0)
         {
-            QMessageBox::critical(0,"Error!","\nLogon attempts exceeded!\n",QMessageBox::Ok);
+            QMessageBox::critical(0,"Error!","\nПревышено количество попыток входа!\n",QMessageBox::Ok);
             exit(-1);
         }
         QMessageBox::critical(0,"Error!","\nAuthentication error!\n",QMessageBox::Ok);
