@@ -6,19 +6,26 @@ Parser::Parser() {
 
 }
 
-void Parser::Parse() {
+void Parser::ParseMaster() {
+    XMLDocument doc;
+    XMLError error = doc.LoadFile(FILE_NAME);
+    if (error != tinyxml2::XML_SUCCESS) return;
+
+    XMLNode * pRoot = doc.FirstChild();
+    XMLElement * masterHash = pRoot->FirstChildElement("master");
+    Data::Instance()->masterHash = masterHash->GetText();
+}
+
+void Parser::ParseData() {
 	std::string s_data;
 
 	XMLDocument doc;
 	XMLError error = doc.LoadFile(FILE_NAME);
 	if (error != tinyxml2::XML_SUCCESS) return;
 
-
 	XMLNode * pRoot = doc.FirstChild();
-	XMLElement * masterHash = pRoot->FirstChildElement("master");
 	XMLElement * raw_data = pRoot->FirstChildElement("data");
 	
-	Data::Instance()->masterHash = masterHash->GetText();
 	s_data = raw_data->GetText();
 	s_data = Encryptor::Instance()->Decrypt(s_data);
 	
@@ -28,7 +35,6 @@ void Parser::Parse() {
 	XMLNode  *accountsNode = tmp.FirstChildElement("accounts");
 	XMLNode  *cardsNode = tmp.FirstChildElement("cards");
 
-	std::string key;
 	for (XMLNode* child = accountsNode->FirstChild(); child != NULL; child = child->NextSibling())
 	{
 		Account account(child);

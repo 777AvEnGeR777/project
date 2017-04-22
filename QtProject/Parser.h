@@ -7,7 +7,8 @@ class Parser {
 public:
 	Parser();
 
-	void Parse();
+    void ParseData();
+    void ParseMaster();
 	void Wrap();
 private:
 	std::string userDataToString();

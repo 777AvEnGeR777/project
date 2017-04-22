@@ -7,11 +7,16 @@ void Data::Save() {
 	p.Wrap();
 }
 
+void Data::GetData() {
+    Parser p;
+    p.ParseData();
+}
+
 Data* Data::Instance() {
     if(instance == nullptr) {
 		instance = new Data();
 		Parser p;
-		p.Parse();
+        p.ParseMaster();
 	}
 	return instance;
 }

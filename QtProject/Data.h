@@ -11,6 +11,7 @@ public:
 	std::map<std::string,Card> cardList;
 	std::string masterHash;
 	void Save();
+    void GetData();
 private:
 	static Data *instance;
 };

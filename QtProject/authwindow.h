@@ -3,6 +3,9 @@
 
 #include <QDialog>
 #include <QMessageBox>
+#include "enums.h"
+#include "Data.h"
+#include "passwordstrengthchecker.h"
 
 namespace Ui {
 class AuthWindow;
@@ -15,7 +18,10 @@ class AuthWindow : public QDialog
 public:
     explicit AuthWindow(QWidget *parent = 0);
     ~AuthWindow();
-    bool GetResult();
+    bool GetResult() { return authResult; }
+
+protected:
+    bool eventFilter(QObject *, QEvent *);
 
 private slots:
     void Authentication();
