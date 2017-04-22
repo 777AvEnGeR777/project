@@ -10,6 +10,12 @@
     <height>160</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="minimumSize">
    <size>
     <width>300</width>
@@ -230,6 +236,13 @@
    </widget>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>editNewMaster</tabstop>
+  <tabstop>editConfirmMaster</tabstop>
+  <tabstop>buttonCreateMaster</tabstop>
+  <tabstop>editMaster</tabstop>
+  <tabstop>buttonLogin</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

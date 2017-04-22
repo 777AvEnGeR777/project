@@ -1,50 +1,6 @@
 #include "authwindow.h"
 #include "ui_authwindow.h"
 
-
-bool AuthWindow::eventFilter(QObject* obj, QEvent *event)
-{
-    if (obj == ui->editNewMaster)
-    {
-        if (event->type() == QEvent::KeyPress)
-        {
-            //FIXME Рассчитывается до ввода нового символа
-            std::string password = ui->editNewMaster->text().toStdString();
-            PasswordStrength strength =PasswordStrengthChecker::Instance()->CheckPasswordStrength(password);
-            QPalette pallete = ui->labelPasswordStrengthLevel->palette();
-            switch (strength) {
-                case NO_PASSWORD:
-                    ui->labelPasswordStrengthLevel->clear();
-                    break;
-                case WEAK:
-                    ui->labelPasswordStrengthLevel->setText("Weak");
-                    pallete.setColor(ui->labelPasswordStrengthLevel->foregroundRole(), Qt::red);
-                    ui->labelPasswordStrengthLevel->setPalette(pallete);
-                    break;
-                case MEDIUM:
-                    ui->labelPasswordStrengthLevel->setText("Medium");
-                    pallete.setColor(ui->labelPasswordStrengthLevel->foregroundRole(), QColor(251, 192, 45));
-                    ui->labelPasswordStrengthLevel->setPalette(pallete);
-                    break;
-                case STRONG:
-                    ui->labelPasswordStrengthLevel->setText("Strong");
-                    pallete.setColor(ui->labelPasswordStrengthLevel->foregroundRole(), QColor(102, 187, 106));
-                    ui->labelPasswordStrengthLevel->setPalette(pallete);
-                    break;
-                case BEST:
-                    ui->labelPasswordStrengthLevel->setText("Best");
-                    pallete.setColor(ui->labelPasswordStrengthLevel->foregroundRole(), Qt::darkGreen);
-                    ui->labelPasswordStrengthLevel->setPalette(pallete);
-                    break;
-                default:
-                    break;
-            }
-        }
-        return false;
-    }
-    return AuthWindow::eventFilter(obj, event);
-}
-
 AuthWindow::AuthWindow(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AuthWindow)
@@ -55,9 +11,7 @@ AuthWindow::AuthWindow(QWidget *parent) :
 
     connect(ui->buttonLogin, SIGNAL(clicked(bool)), this, SLOT(Authentication()));
     connect(ui->buttonCreateMaster, SIGNAL(clicked(bool)), this, SLOT(CreateMaster()));
-
-    ui->editNewMaster->installEventFilter(this);
-
+    connect(ui->editNewMaster, SIGNAL(textChanged(QString)), this, SLOT(PasswordStrengthWatcher()));
     std::string masterHash = Data::Instance()->masterHash;
     if(masterHash.empty())
         ui->groupLogin->hide();
@@ -115,4 +69,38 @@ void AuthWindow::CreateMaster()
         close();
     }
 
+}
+
+void AuthWindow::PasswordStrengthWatcher()
+{
+    std::string password = ui->editNewMaster->text().toStdString();
+    PasswordStrength strength =PasswordStrengthChecker::Instance()->CheckPasswordStrength(password);
+    QPalette pallete = ui->labelPasswordStrengthLevel->palette();
+    switch (strength) {
+        case NO_PASSWORD:
+            ui->labelPasswordStrengthLevel->clear();
+            break;
+        case WEAK:
+            ui->labelPasswordStrengthLevel->setText("Weak");
+            pallete.setColor(ui->labelPasswordStrengthLevel->foregroundRole(), Qt::red);
+            ui->labelPasswordStrengthLevel->setPalette(pallete);
+            break;
+        case MEDIUM:
+            ui->labelPasswordStrengthLevel->setText("Medium");
+            pallete.setColor(ui->labelPasswordStrengthLevel->foregroundRole(), QColor(251, 192, 45));
+            ui->labelPasswordStrengthLevel->setPalette(pallete);
+            break;
+        case STRONG:
+            ui->labelPasswordStrengthLevel->setText("Strong");
+            pallete.setColor(ui->labelPasswordStrengthLevel->foregroundRole(), QColor(102, 187, 106));
+            ui->labelPasswordStrengthLevel->setPalette(pallete);
+            break;
+        case BEST:
+            ui->labelPasswordStrengthLevel->setText("Best");
+            pallete.setColor(ui->labelPasswordStrengthLevel->foregroundRole(), Qt::darkGreen);
+            ui->labelPasswordStrengthLevel->setPalette(pallete);
+            break;
+        default:
+            break;
+    }
 }

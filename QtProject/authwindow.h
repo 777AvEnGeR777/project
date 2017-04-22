@@ -20,12 +20,10 @@ public:
     ~AuthWindow();
     bool GetResult() { return authResult; }
 
-protected:
-    bool eventFilter(QObject *, QEvent *);
-
 private slots:
     void Authentication();
     void CreateMaster();
+    void PasswordStrengthWatcher();
 
 private:
     Ui::AuthWindow *ui;
