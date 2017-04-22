@@ -1,18 +1,15 @@
 #include "Data.h"
 
 void Data::Save() {
-	Parser p;
-	p.Wrap();
+    parser->Wrap();
 }
 
 void Data::GetData() {
-    Parser p;
-    p.ParseData();
+    parser->ParseData();
 }
 
 void Data::GetMaster() {
-    Parser p;
-    p.ParseMaster();
+    parser->ParseMaster();
 }
 
 Data &Data::Instance() {

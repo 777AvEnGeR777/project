@@ -4,6 +4,8 @@
 #include "Card.h"
 #include "Parser.h"
 
+class Parser;
+
 class Data {
 public:
     static Data& Instance();
@@ -17,4 +19,6 @@ private:
     Data() {}
     Data(const Data&);
     Data& operator=(Data&);
+    Parser* parser;
+
 };
