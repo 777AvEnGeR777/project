@@ -1,3 +1,6 @@
+#ifndef ENCRYPTOR_H
+#define ENCRYPTOR_H
+
 #include <string>
 #include "cryptopp565/cryptlib.h"
 #include "cryptopp565/sha.h"
@@ -20,3 +23,5 @@ private:
 	static byte secretKey[CryptoPP::AES::MAX_KEYLENGTH];
 	static const byte iv[CryptoPP::AES::BLOCKSIZE];
 };
+
+#endif

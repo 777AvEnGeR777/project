@@ -1,4 +1,6 @@
-#pragma once
+#ifndef DATA_H
+#define DATA_H
+
 #include <map>
 #include "Account.h"
 #include "Card.h"
@@ -22,3 +24,5 @@ private:
     Parser* parser;
 
 };
+
+#endif

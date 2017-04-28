@@ -1,3 +1,6 @@
+#ifndef CARD_H
+#define CARD_H
+
 #include "IWrappable.h"
 
 class Card: IWrappable {
@@ -17,3 +20,5 @@ public:
 		date(_date), cvc(_cvc), owner(_owner), pin(_pin), secret(_secret), phone(_phone) {}
 	Card(tinyxml2::XMLNode*);
 };
+
+#endif

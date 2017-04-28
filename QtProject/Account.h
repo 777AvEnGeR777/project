@@ -1,3 +1,6 @@
+#ifndef ACCOUNT_H
+#define ACCOUNT_H
+
 #include "IWrappable.h"
 
 class Account: IWrappable {
@@ -12,3 +15,5 @@ public:
 		key(_key), login(_login), password(_password), comment(_comment) {}
 	Account(tinyxml2::XMLNode*);
 };
+
+#endif

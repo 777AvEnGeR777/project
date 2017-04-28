@@ -1,4 +1,6 @@
-#pragma once
+#ifndef PARSER_H
+#define PARSER_H
+
 #include "tynixml\tinyxml2.h"
 #include "Data.h"
 #include "Encryptor.h"
@@ -13,3 +15,5 @@ public:
 private:
 	std::string userDataToString();
 };
+
+#endif

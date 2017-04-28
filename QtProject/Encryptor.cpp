@@ -50,5 +50,5 @@ void Encryptor::DerieveKey(std::string password) {
 
 	CryptoPP::PKCS5_PBKDF2_HMAC<CryptoPP::SHA1> pbkdf2;
 	pbkdf2.DeriveKey(secretKey, sizeof(secretKey), 0, (const byte*)password.data(), password.length(),
-		salt, saltLen, 1);
+        salt, saltLen, 4096);
 }
