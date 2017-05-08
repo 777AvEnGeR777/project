@@ -2,6 +2,7 @@
 #define ACCOUNTFORM_H
 
 #include <QDialog>
+#include <QListWidgetItem>
 #include <Account.h>
 #include "Data.h"
 
@@ -23,10 +24,12 @@ private:
     Ui::accountform *ui;
 
     std::string account_name;
+    bool show_password;
 
 private slots:
 
     void save_account();
+    void toggleShowPassword();
 
 };
 

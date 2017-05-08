@@ -30,16 +30,6 @@
      <attribute name="title">
       <string>Tab 1</string>
      </attribute>
-     <widget class="QListView" name="listView">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>291</width>
-        <height>231</height>
-       </rect>
-      </property>
-     </widget>
      <widget class="QPushButton" name="button_addaccount">
       <property name="geometry">
        <rect>
@@ -51,6 +41,16 @@
       </property>
       <property name="text">
        <string>Add Account</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="accounts_list">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>301</width>
+        <height>231</height>
+       </rect>
       </property>
      </widget>
     </widget>
