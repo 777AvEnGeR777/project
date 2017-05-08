@@ -51,10 +51,14 @@ void accountform::save_account(){
     std::string login = ui->field_login->text().toStdString();
     std::string password = ui->field_password->text().toStdString();
     std::string comment = ui->field_comment->toPlainText().toStdString();
-
     Account account (name, login, password, comment);
-
-    Data::Instance().accountList.insert(std::make_pair(name, account));
+    if(account_name == ""){
+        Data::Instance().accountList.insert(std::make_pair(name, account));
+    }else{
+        Data::Instance().accountList.find(account_name)->second.login = login;
+        Data::Instance().accountList.find(account_name)->second.password = password;
+        Data::Instance().accountList.find(account_name)->second.comment = comment;
+    }
 
     Data::Instance().Save();
     close();
