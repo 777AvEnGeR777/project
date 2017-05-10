@@ -20,12 +20,13 @@ private slots:
     void on_tabWidget_destroyed();
 
     void add_account();
-    void edit_account(QListWidgetItem* item);
-
+    void edit_account();
+    void switch_account(QString item);
 private:
     Ui::MainWindow *ui;
 
     void build_accounts();
+    void select_account(std::string name);
 
 };
 
