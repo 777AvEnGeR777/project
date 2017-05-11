@@ -3,22 +3,16 @@
 
 accountform::accountform(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::accountform),
-    show_password(false)
+    ui(new Ui::accountform)
 {
 
     ui->setupUi(this);
 
-    if(!show_password){
-        ui->field_password->setEchoMode(QLineEdit::Password);
-        ui->button_showpassword->setText("Show password");
-    }else{
-        ui->field_password->setEchoMode(QLineEdit::Normal);
-        ui->button_showpassword->setText("Hide password");
-    }
+    ui->field_password->setEchoMode(QLineEdit::Password);
 
     connect(ui->button_save, SIGNAL(clicked(bool)), this, SLOT(save_account()));
-    connect(ui->button_showpassword, SIGNAL(clicked(bool)), this, SLOT(toggleShowPassword()));
+    connect(ui->button_showpassword, SIGNAL(pressed()), this, SLOT(toggleShowPassword()));
+    connect(ui->button_showpassword, SIGNAL(released()), this, SLOT(toggleHidePassword()));
 }
 
 accountform::~accountform()
@@ -27,14 +21,11 @@ accountform::~accountform()
 }
 
 void accountform::toggleShowPassword(){
-    if(!show_password){
-        ui->field_password->setEchoMode(QLineEdit::Password);
-        ui->button_showpassword->setText("Show password");
-    }else{
-        ui->field_password->setEchoMode(QLineEdit::Normal);
-        ui->button_showpassword->setText("Hide password");
-    }
-    show_password = !show_password;
+     ui->field_password->setEchoMode(QLineEdit::Normal);
+}
+
+void accountform::toggleHidePassword(){
+    ui->field_password->setEchoMode(QLineEdit::Password);
 }
 
 void accountform::set_account_name(std::string name){

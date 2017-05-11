@@ -11,10 +11,10 @@ MainWindow::MainWindow(QWidget *parent) :
     build_accounts();
 
 
-    ui->textLogin->setEnabled(false);
-    ui->textPassword->setEnabled(false);
+    ui->textLogin->setReadOnly(true);
+    ui->textPassword->setReadOnly(true);
     ui->textPassword->setEchoMode(QLineEdit::Password);
-    ui->textComment->setEnabled(false);
+    ui->textComment->setReadOnly(true);
     connect(ui->accountCreate, SIGNAL(clicked(bool)), this, SLOT(add_account()));
     connect(ui->accountEdit, SIGNAL(clicked(bool)), this, SLOT(edit_account()));
     connect(ui->selectAccount, SIGNAL(currentIndexChanged(QString)),this, SLOT(switch_account(QString)));

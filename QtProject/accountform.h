@@ -24,12 +24,12 @@ private:
     Ui::accountform *ui;
 
     std::string account_name;
-    bool show_password;
 
 private slots:
 
     void save_account();
     void toggleShowPassword();
+    void toggleHidePassword();
 
 };
 
