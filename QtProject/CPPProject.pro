@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     Encryptor.cpp \
     Parser.cpp \
     passwordstrengthchecker.cpp \
-    passwordgenerator.cpp
+    passwordgenerator.cpp \
+    accountform.cpp
 
 HEADERS  += mainwindow.h \
     authwindow.h \
@@ -34,10 +35,12 @@ HEADERS  += mainwindow.h \
     Parser.h \
     passwordstrengthchecker.h \
     enums.h \
-    passwordgenerator.h
+    passwordgenerator.h \
+    accountform.h
 
 FORMS    += mainwindow.ui \
-    authwindow.ui
+    authwindow.ui \
+    accountform.ui
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/libs/release/ -lcryptlib
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/libs/debug/ -lcryptlib
