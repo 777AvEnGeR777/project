@@ -13,11 +13,20 @@ accountform::accountform(QWidget *parent) :
     connect(ui->button_save, SIGNAL(clicked(bool)), this, SLOT(save_account()));
     connect(ui->button_showpassword, SIGNAL(pressed()), this, SLOT(toggleShowPassword()));
     connect(ui->button_showpassword, SIGNAL(released()), this, SLOT(toggleHidePassword()));
+    connect(ui->button_generate, SIGNAL(clicked(bool)), this, SLOT(generatePassword()));
 }
 
 accountform::~accountform()
 {
     delete ui;
+}
+
+void accountform::generatePassword() {
+    std::string password = PasswordGenerator::Instance().Generate(ui->spin_password_length->value(),
+                                                                  ui->checkbox_letters->isChecked(),
+                                                                  ui->checkbox_digits->isChecked(),
+                                                                  ui->checkbox_specials->isChecked());
+    ui->field_password->setText(QString(password.c_str()));
 }
 
 void accountform::toggleShowPassword(){

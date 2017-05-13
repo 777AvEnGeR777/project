@@ -5,6 +5,7 @@
 #include <QListWidgetItem>
 #include <Account.h>
 #include "Data.h"
+#include "passwordgenerator.h"
 
 namespace Ui {
 class accountform;
@@ -30,6 +31,7 @@ private slots:
     void save_account();
     void toggleShowPassword();
     void toggleHidePassword();
+    void generatePassword();
 
 };
 

@@ -3,6 +3,7 @@
 
 #include "accountform.h"
 #include <QMainWindow>
+#include <QMessageBox>
 
 namespace Ui {
 class MainWindow;

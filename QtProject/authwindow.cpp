@@ -16,9 +16,15 @@ AuthWindow::AuthWindow(QWidget *parent) :
     Data::Instance().GetMaster();
     std::string masterHash = Data::Instance().masterHash;
     if(masterHash.empty())
+    {
         ui->groupLogin->hide();
+        ui->buttonCreateMaster->setDefault(true);
+    }
     else
+    {
         ui->groupCreateMaster->hide();
+        ui->buttonLogin->setDefault(true);
+    }
 }
 
 AuthWindow::~AuthWindow()

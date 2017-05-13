@@ -1,7 +1,7 @@
 #ifndef PASSWORDGENERATOR_H
 #define PASSWORDGENERATOR_H
 #include <string>
-
+#include <algorithm>
 class PasswordGenerator
 {
 public:

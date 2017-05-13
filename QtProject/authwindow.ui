@@ -79,6 +79,12 @@
     <property name="text">
      <string>LogIn</string>
     </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
    </widget>
    <widget class="QLineEdit" name="editMaster">
     <property name="geometry">
@@ -163,6 +169,12 @@
     </property>
     <property name="text">
      <string>Create master password</string>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="labelConfirmMaster">
