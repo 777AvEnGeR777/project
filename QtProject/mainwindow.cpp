@@ -39,6 +39,11 @@ void MainWindow::build_accounts(){
     if(ui->selectAccount->currentIndex() > -1){
         std::string currentKey = ui->selectAccount->currentText().toUtf8().constData();
         select_account(currentKey);
+        ui->accountEdit->setEnabled(true);
+    }
+    else
+    {
+        ui->accountEdit->setEnabled(false);
     }
 }
 

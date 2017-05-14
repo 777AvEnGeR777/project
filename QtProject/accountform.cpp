@@ -52,6 +52,32 @@ void accountform::save_account(){
     std::string password = ui->field_password->text().toStdString();
     std::string comment = ui->field_comment->toPlainText().toStdString();
     Account account (name, login, password, comment);
+
+    if(name.empty()){
+        QMessageBox::warning(nullptr, "Empty account name", "\nAccount name cannot be empty!\n",
+                             QMessageBox::Ok);
+        return;
+    }
+
+    if(Data::Instance().accountList.find(name) != Data::Instance().accountList.end()){
+        if(QMessageBox::warning(nullptr, "Account name is already exist!",
+                                "\nThis account name is already exist!\nDo you want to override it?\n",
+                                QMessageBox::Yes, QMessageBox::No) == QMessageBox::Yes){
+            Data::Instance().accountList.find(name)->second.login = login;
+            Data::Instance().accountList.find(name)->second.password = password;
+            Data::Instance().accountList.find(name)->second.comment = comment;
+            Data::Instance().Save();
+            close();
+        }
+        return;
+    }
+
+    if(login.empty() && password.empty()){
+        QMessageBox::warning(nullptr, "Empty record!",
+                             "\nPlease, fill at least one field \"Login\" or \"Password\"!\n", QMessageBox::Ok);
+        return;
+    }
+
     if(account_name == ""){
         Data::Instance().accountList.insert(std::make_pair(name, account));
     }else{

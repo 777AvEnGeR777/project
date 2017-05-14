@@ -50,10 +50,10 @@ void AuthWindow::Authentication()
         attempts--;
         if(attempts == 0)
         {
-            QMessageBox::critical(0,"Error!","\nLogon limit exceeded!\n",QMessageBox::Ok);
+            QMessageBox::critical(nullptr,"Error!","\nLogon limit exceeded!\n",QMessageBox::Ok);
             close();
         }
-        QMessageBox::critical(0,"Error!","\nAuthentication error!\n",QMessageBox::Ok);
+        QMessageBox::critical(nullptr,"Error!","\nAuthentication error!\n",QMessageBox::Ok);
     }
 }
 
@@ -64,7 +64,7 @@ void AuthWindow::CreateMaster()
 
     if(password != confirmPassword)
     {
-        QMessageBox::warning(0,"Error!", "\nPasswords doesn't match!\n", QMessageBox::Ok);
+        QMessageBox::warning(nullptr,"Error!", "\nPasswords doesn't match!\n", QMessageBox::Ok);
     }
     else
     {

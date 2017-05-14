@@ -26,10 +26,18 @@ void Account::Wrap(tinyxml2::XMLDocument& doc, tinyxml2::XMLNode* accounts) {
 }
 
 void Account::Unwrap(XMLNode* xmlNode) {
-	key = xmlNode->FirstChildElement("key")->GetText();
-	login = xmlNode->FirstChildElement("login")->GetText();
-	password = xmlNode->FirstChildElement("password")->GetText();
-	comment = xmlNode->FirstChildElement("comment")->GetText();
+    XMLElement* element = xmlNode->FirstChildElement("key");
+    if(element->GetText() != nullptr)
+        key = element->GetText();
+    element = xmlNode->FirstChildElement("login");
+    if(element->GetText() != nullptr)
+        login = element->GetText();
+    element = xmlNode->FirstChildElement("password");
+    if(element->GetText() != nullptr)
+        password = element->GetText();
+    element = xmlNode->FirstChildElement("comment");
+    if(element->GetText() != nullptr)
+        comment = element->GetText();
 }
 
 Account::Account(XMLNode* xmlNode) {

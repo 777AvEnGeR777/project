@@ -41,14 +41,30 @@ void Card::Wrap(tinyxml2::XMLDocument& doc, tinyxml2::XMLNode* cards) {
 }
 
 void Card::Unwrap(XMLNode* xmlNode) {
-	key = xmlNode->FirstChildElement("key")->GetText();
-	number = xmlNode->FirstChildElement("number")->GetText();
-	date = xmlNode->FirstChildElement("date")->GetText();
-	cvc = xmlNode->FirstChildElement("cvc")->GetText();
-	owner = xmlNode->FirstChildElement("owner")->GetText();
-	pin = xmlNode->FirstChildElement("pin")->GetText();
-	secret = xmlNode->FirstChildElement("secret")->GetText();
-	phone = xmlNode->FirstChildElement("phone")->GetText();
+    XMLElement* element = xmlNode->FirstChildElement("key");
+    if(element->GetText() != nullptr)
+        key = element->GetText();
+    element = xmlNode->FirstChildElement("number");
+    if(element->GetText() != nullptr)
+        number = element->GetText();
+    element = xmlNode->FirstChildElement("date");
+    if(element->GetText() != nullptr)
+        date = element->GetText();
+    element = xmlNode->FirstChildElement("cvc");
+    if(element->GetText() != nullptr)
+        cvc = element->GetText();
+    element = xmlNode->FirstChildElement("owner");
+    if(element->GetText() != nullptr)
+        owner = element->GetText();
+    element = xmlNode->FirstChildElement("pin");
+    if(element->GetText() != nullptr)
+        pin = element->GetText();
+    element = xmlNode->FirstChildElement("secret");
+    if(element->GetText() != nullptr)
+        secret = element->GetText();
+    element = xmlNode->FirstChildElement("phone");
+    if(element->GetText() != nullptr)
+        phone = element->GetText();
 }
 
 Card::Card(XMLNode* xmlNode) {
