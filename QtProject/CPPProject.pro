@@ -67,3 +67,5 @@ else:win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/libs/debug/
 else:win32:!win32-g++:CONFIG(release, debug|release): PRE_TARGETDEPS += $$PWD/libs/release/tinyxml2.lib
 else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/libs/debug/tinyxml2.lib
 else:unix: PRE_TARGETDEPS += $$PWD/libs/libtinyxml2.a
+
+RESOURCES +=
