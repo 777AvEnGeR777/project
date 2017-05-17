@@ -41,21 +41,35 @@ void accountform::toggleHidePassword(){
     ui->field_password->setEchoMode(QLineEdit::Password);
 }
 
-void accountform::set_form_type(std::string type){
-    if(type == "card"){
+void accountform::set_form_type(std::string set_type){
+    if(set_type == "card"){
         ui->accountForm->hide();
         ui->cardForm->show();
+        type=set_type;
     }
 }
 
 void accountform::set_account_name(std::string name){
     account_name = name;
-    ui->field_accountName->setText(name.c_str());
-    ui->field_accountName->setEnabled(false);
-    ui->field_comment->setText(Data::Instance().accountList.find(name.c_str())->second.comment.c_str());
-    ui->field_login->setText(Data::Instance().accountList.find(name.c_str())->second.login.c_str());
-    ui->field_password->setText(Data::Instance().accountList.find(name.c_str())->second.password.c_str());
+    if(type == "card"){
+        ui->field_cardName->setText(name.c_str());
+        ui->field_cardName->setEnabled(false);
+        ui->field_cardCVC->setText(Data::Instance().cardList.find(name.c_str())->second.cvc.c_str());
+        ui->field_cardDate->setText(Data::Instance().cardList.find(name.c_str())->second.date.c_str());
+        ui->field_cardNumber->setText(Data::Instance().cardList.find(name.c_str())->second.number.c_str());
+        ui->field_cardOwner->setText(Data::Instance().cardList.find(name.c_str())->second.owner.c_str());
+        ui->field_cardPhone->setText(Data::Instance().cardList.find(name.c_str())->second.phone.c_str());
+        ui->field_cardSecret->setText(Data::Instance().cardList.find(name.c_str())->second.secret.c_str());
+        ui->field_cardPin->setText(Data::Instance().cardList.find(name.c_str())->second.pin.c_str());
+    }else{
+        ui->field_accountName->setText(name.c_str());
+        ui->field_accountName->setEnabled(false);
+        ui->field_comment->setText(Data::Instance().accountList.find(name.c_str())->second.comment.c_str());
+        ui->field_login->setText(Data::Instance().accountList.find(name.c_str())->second.login.c_str());
+        ui->field_password->setText(Data::Instance().accountList.find(name.c_str())->second.password.c_str());
+    }
 }
+
 
 void accountform::save_account(){
     std::string name = ui->field_accountName->text().toStdString();
@@ -103,12 +117,27 @@ void accountform::save_account(){
 
 void accountform::save_card(){
     std::string name = ui->field_cardName->text().toStdString();
+    std::string number = ui->field_cardNumber->text().toStdString();
+    std::string date = ui->field_cardDate->text().toStdString();
+    std::string cvc = ui->field_cardCVC->text().toStdString();
+    std::string owner = ui->field_cardOwner->text().toStdString();
+    std::string pin = ui->field_cardPin->text().toStdString();
+    std::string secret = ui->field_cardSecret->text().toStdString();
+    std::string phone = ui->field_cardPhone->text().toStdString();
 
-    Card card(name, "121", "122", "313", "44", "55", "66", "77");
+    Card card(name, number, date, cvc, owner, pin, secret, phone);
 
     if(name.empty()){
         QMessageBox::warning(nullptr, "Empty card name", "\nCard name cannot be empty!\n",
                              QMessageBox::Ok);
+        Data::Instance().cardList.find(name)->second.number = number;
+        Data::Instance().cardList.find(name)->second.date = date;
+        Data::Instance().cardList.find(name)->second.cvc = cvc;
+        Data::Instance().cardList.find(name)->second.owner = owner;
+        Data::Instance().cardList.find(name)->second.pin = pin;
+        Data::Instance().cardList.find(name)->second.secret = secret;
+        Data::Instance().cardList.find(name)->second.phone = phone;
+        Data::Instance().Save();
         return;
     }
 
@@ -116,7 +145,13 @@ void accountform::save_card(){
         if(QMessageBox::warning(nullptr, "Card name is already exist!",
                                 "\nThis card name is already exist!\nDo you want to override it?\n",
                                 QMessageBox::Yes, QMessageBox::No) == QMessageBox::Yes){
-            // todo
+            Data::Instance().cardList.find(account_name)->second.number = number;
+            Data::Instance().cardList.find(account_name)->second.date = date;
+            Data::Instance().cardList.find(account_name)->second.cvc = cvc;
+            Data::Instance().cardList.find(account_name)->second.owner = owner;
+            Data::Instance().cardList.find(account_name)->second.pin = pin;
+            Data::Instance().cardList.find(account_name)->second.secret = secret;
+            Data::Instance().cardList.find(account_name)->second.phone = phone;
             Data::Instance().Save();
             close();
         }
@@ -126,8 +161,13 @@ void accountform::save_card(){
     if(account_name == ""){
         Data::Instance().cardList.insert(std::make_pair(name, card));
     }else{
-        // todo
-
+        Data::Instance().cardList.find(account_name)->second.number = number;
+        Data::Instance().cardList.find(account_name)->second.date = date;
+        Data::Instance().cardList.find(account_name)->second.cvc = cvc;
+        Data::Instance().cardList.find(account_name)->second.owner = owner;
+        Data::Instance().cardList.find(account_name)->second.pin = pin;
+        Data::Instance().cardList.find(account_name)->second.secret = secret;
+        Data::Instance().cardList.find(account_name)->second.phone = phone;
     }
 
     Data::Instance().Save();

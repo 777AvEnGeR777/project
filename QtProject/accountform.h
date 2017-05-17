@@ -28,6 +28,7 @@ private:
     Ui::accountform *ui;
 
     std::string account_name;
+    std::string type;
 
 private slots:
 

@@ -25,7 +25,7 @@ private slots:
     void switch_account(QString item);
 
     void add_card();
-//    void edit_card();
+    void edit_card();
     void switch_card(QString item);
 
     void toggleAccountsTab();

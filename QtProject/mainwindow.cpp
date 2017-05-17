@@ -27,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->selectAccount, SIGNAL(currentIndexChanged(QString)),this, SLOT(switch_account(QString)));
 
     connect(ui->cardCreate, SIGNAL(clicked(bool)), this, SLOT(add_card()));
+    connect(ui->cardEdit, SIGNAL(clicked(bool)), this, SLOT(edit_card()));
     connect(ui->selectCard, SIGNAL(currentIndexChanged(QString)), this, SLOT(switch_card(QString)));
 }
 
@@ -102,6 +103,15 @@ void MainWindow::switch_card(QString item){
     }
 }
 
+void MainWindow::edit_card(){
+    accountform *account_form = new accountform;
+    account_form->set_form_type("card");
+    account_form->set_account_name(ui->selectCard->currentText().toUtf8().constData());
+
+    account_form->exec();
+    build_accounts();
+}
+
 void MainWindow::select_account(std::string name){
     ui->textLogin->setText(Data::Instance().accountList.find(name.c_str())->second.login.c_str());
     ui->textPassword->setText(Data::Instance().accountList.find(name.c_str())->second.password.c_str());
@@ -124,7 +134,7 @@ void MainWindow::edit_account(){
     account_form->set_account_name(ui->selectAccount->currentText().toUtf8().constData());
 
     account_form->exec();
-    build_accounts();
+    build_cards();
 }
 
 void MainWindow::add_account(){
