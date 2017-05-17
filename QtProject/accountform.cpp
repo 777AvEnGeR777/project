@@ -10,10 +10,14 @@ accountform::accountform(QWidget *parent) :
 
     ui->field_password->setEchoMode(QLineEdit::Password);
 
+    ui->cardForm->hide();
+
     connect(ui->button_save, SIGNAL(clicked(bool)), this, SLOT(save_account()));
     connect(ui->button_showpassword, SIGNAL(pressed()), this, SLOT(toggleShowPassword()));
     connect(ui->button_showpassword, SIGNAL(released()), this, SLOT(toggleHidePassword()));
     connect(ui->button_generate, SIGNAL(clicked(bool)), this, SLOT(generatePassword()));
+
+    connect(ui->button_cardSave, SIGNAL(clicked(bool)), this, SLOT(save_card()));
 }
 
 accountform::~accountform()
@@ -35,6 +39,13 @@ void accountform::toggleShowPassword(){
 
 void accountform::toggleHidePassword(){
     ui->field_password->setEchoMode(QLineEdit::Password);
+}
+
+void accountform::set_form_type(std::string type){
+    if(type == "card"){
+        ui->accountForm->hide();
+        ui->cardForm->show();
+    }
 }
 
 void accountform::set_account_name(std::string name){
@@ -84,6 +95,39 @@ void accountform::save_account(){
         Data::Instance().accountList.find(account_name)->second.login = login;
         Data::Instance().accountList.find(account_name)->second.password = password;
         Data::Instance().accountList.find(account_name)->second.comment = comment;
+    }
+
+    Data::Instance().Save();
+    close();
+}
+
+void accountform::save_card(){
+    std::string name = ui->field_cardName->text().toStdString();
+
+    Card card(name, "121", "122", "313", "44", "55", "66", "77");
+
+    if(name.empty()){
+        QMessageBox::warning(nullptr, "Empty card name", "\nCard name cannot be empty!\n",
+                             QMessageBox::Ok);
+        return;
+    }
+
+    if(Data::Instance().cardList.find(name) != Data::Instance().cardList.end()){
+        if(QMessageBox::warning(nullptr, "Card name is already exist!",
+                                "\nThis card name is already exist!\nDo you want to override it?\n",
+                                QMessageBox::Yes, QMessageBox::No) == QMessageBox::Yes){
+            // todo
+            Data::Instance().Save();
+            close();
+        }
+        return;
+    }
+
+    if(account_name == ""){
+        Data::Instance().cardList.insert(std::make_pair(name, card));
+    }else{
+        // todo
+
     }
 
     Data::Instance().Save();

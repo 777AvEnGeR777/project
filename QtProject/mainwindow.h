@@ -23,11 +23,22 @@ private slots:
     void add_account();
     void edit_account();
     void switch_account(QString item);
+
+    void add_card();
+//    void edit_card();
+    void switch_card(QString item);
+
+    void toggleAccountsTab();
+    void toggleCardsTab();
+    void toggleSettingsTab();
 private:
     Ui::MainWindow *ui;
 
+    void hide_tabs();
     void build_accounts();
+    void build_cards();
     void select_account(std::string name);
+    void select_card(std::string name);
 
 };
 

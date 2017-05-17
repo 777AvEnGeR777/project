@@ -6,228 +6,287 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>450</width>
-    <height>259</height>
+    <width>464</width>
+    <height>559</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>New record</string>
   </property>
-  <widget class="QLabel" name="label_acount_name">
+  <widget class="QGroupBox" name="accountForm">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>121</width>
-     <height>16</height>
+     <x>0</x>
+     <y>0</y>
+     <width>461</width>
+     <height>271</height>
     </rect>
    </property>
-   <property name="text">
-    <string>Account name</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_login">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>60</y>
-     <width>47</width>
-     <height>13</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Login</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_password">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>110</y>
-     <width>47</width>
-     <height>13</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Password</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="field_accountName">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>30</y>
-     <width>271</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="field_login">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>80</y>
-     <width>271</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="field_password">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>130</y>
-     <width>271</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="button_showpassword">
-   <property name="geometry">
-    <rect>
-     <x>241</x>
-     <y>130</y>
-     <width>40</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Show</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="button_save">
-   <property name="geometry">
-    <rect>
-     <x>290</x>
-     <y>180</y>
-     <width>151</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Save account</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_comment">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>160</y>
-     <width>61</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Comment</string>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="field_comment">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>180</y>
-     <width>271</width>
-     <height>71</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QGroupBox" name="group_password_generator">
-   <property name="geometry">
-    <rect>
-     <x>290</x>
-     <y>10</y>
-     <width>151</width>
-     <height>141</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>Password Generator</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-   <widget class="QCheckBox" name="checkbox_specials">
+   <widget class="QLineEdit" name="field_password">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>90</y>
-      <width>70</width>
-      <height>17</height>
+      <y>130</y>
+      <width>271</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="group_password_generator">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>10</y>
+      <width>151</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Password Generator</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <widget class="QCheckBox" name="checkbox_specials">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>90</y>
+       <width>70</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Specials</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkbox_letters">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>61</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Letters</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkbox_digits">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>70</y>
+       <width>51</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Digits</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="button_generate">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>110</y>
+       <width>131</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Generate</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_password_length">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>91</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Password length:</string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="spin_password_length">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>18</y>
+       <width>42</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <number>4</number>
+     </property>
+     <property name="maximum">
+      <number>30</number>
+     </property>
+     <property name="value">
+      <number>10</number>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QLineEdit" name="field_login">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>271</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_login">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>47</width>
+      <height>13</height>
      </rect>
     </property>
     <property name="text">
-     <string>Specials</string>
+     <string>Login</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkbox_letters">
+   <widget class="QPushButton" name="button_save">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>50</y>
-      <width>61</width>
-      <height>17</height>
+      <x>290</x>
+      <y>180</y>
+      <width>151</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="text">
-     <string>Letters</string>
+     <string>Save account</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkbox_digits">
+   <widget class="QLabel" name="label_acount_name">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>70</y>
-      <width>51</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Digits</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="button_generate">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>110</y>
-      <width>131</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Generate</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_password_length">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>91</width>
+      <y>10</y>
+      <width>121</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Password length:</string>
+     <string>Account name</string>
     </property>
    </widget>
-   <widget class="QSpinBox" name="spin_password_length">
+   <widget class="QTextEdit" name="field_comment">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>18</y>
-      <width>42</width>
-      <height>22</height>
+      <x>10</x>
+      <y>180</y>
+      <width>271</width>
+      <height>71</height>
      </rect>
     </property>
-    <property name="minimum">
-     <number>4</number>
+   </widget>
+   <widget class="QLabel" name="label_password">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>110</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
     </property>
-    <property name="maximum">
-     <number>30</number>
+    <property name="text">
+     <string>Password</string>
     </property>
-    <property name="value">
-     <number>10</number>
+   </widget>
+   <widget class="QLabel" name="label_comment">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>160</y>
+      <width>61</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Comment</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="field_accountName">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>271</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="button_showpassword">
+    <property name="geometry">
+     <rect>
+      <x>241</x>
+      <y>130</y>
+      <width>40</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Show</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="cardForm">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>270</y>
+     <width>461</width>
+     <height>281</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QPushButton" name="button_cardSave">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>190</y>
+      <width>151</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Save account</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_acount_name_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Card Name</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="field_cardName">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>271</width>
+      <height>20</height>
+     </rect>
     </property>
    </widget>
   </widget>
