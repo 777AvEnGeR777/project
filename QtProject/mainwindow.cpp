@@ -119,7 +119,7 @@ void MainWindow::edit_card(){
     account_form->set_account_name(ui->selectCard->currentText().toUtf8().constData());
 
     account_form->exec();
-    build_accounts();
+    build_cards();
 }
 
 void MainWindow::select_account(std::string name){
@@ -144,7 +144,7 @@ void MainWindow::edit_account(){
     account_form->set_account_name(ui->selectAccount->currentText().toUtf8().constData());
 
     account_form->exec();
-    build_cards();
+    build_accounts();
 }
 
 void MainWindow::add_account(){
