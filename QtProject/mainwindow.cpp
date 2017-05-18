@@ -15,8 +15,18 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->textPassword->setEchoMode(QLineEdit::Password);
     ui->textComment->setReadOnly(true);
 
-    hide_tabs();
-    ui->groupAccounts->show();
+    ui->textCVC->setReadOnly(true);
+    ui->textNumber->setReadOnly(true);
+    ui->textOwner->setReadOnly(true);
+    ui->textPin->setReadOnly(true);
+    ui->textSecret->setReadOnly(true);
+    ui->textSupportPhone->setReadOnly(true);
+    ui->textDate->setReadOnly(true);
+
+
+    ui->groupCards->hide();
+    ui->groupSettings->hide();
+    currentTab = ACCOUNT;
 
     connect(ui->toggleAccounts, SIGNAL(clicked(bool)), this, SLOT(toggleAccountsTab()));
     connect(ui->toggleCards, SIGNAL(clicked(bool)), this, SLOT(toggleCardsTab()));
@@ -150,23 +160,36 @@ void MainWindow::add_card(){
     build_cards();
 }
 
-void MainWindow::hide_tabs(){
-    ui->groupCards->hide();
-    ui->groupSettings->hide();
-    ui->groupAccounts->hide();
+void MainWindow::hide_tab(){
+    switch (currentTab) {
+    case ACCOUNT:
+        ui->groupAccounts->hide();
+        break;
+    case CARD:
+        ui->groupCards->hide();
+        break;
+    case SETTINGS:
+        ui->groupSettings->hide();
+        break;
+    default:
+        break;
+    }
 }
 
 void MainWindow::toggleAccountsTab(){
-    hide_tabs();
+    hide_tab();
     ui->groupAccounts->show();
+    currentTab = ACCOUNT;
 }
 
 void MainWindow::toggleCardsTab(){
-    hide_tabs();
+    hide_tab();
     ui->groupCards->show();
+    currentTab = CARD;
 }
 
 void MainWindow::toggleSettingsTab(){
-    hide_tabs();
+    hide_tab();
     ui->groupSettings->show();
+    currentTab = SETTINGS;
 }

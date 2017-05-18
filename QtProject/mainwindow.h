@@ -34,7 +34,10 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    void hide_tabs();
+    enum tabTypes {ACCOUNT, CARD, SETTINGS};
+    int currentTab;
+
+    void hide_tab();
     void build_accounts();
     void build_cards();
     void select_account(std::string name);

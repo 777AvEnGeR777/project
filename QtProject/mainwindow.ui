@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>498</width>
-    <height>288</height>
+    <width>490</width>
+    <height>278</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <x>0</x>
       <y>0</y>
       <width>140</width>
-      <height>261</height>
+      <height>281</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -350,8 +350,6 @@
       <string>Settings</string>
      </property>
     </widget>
-    <zorder>pushButton_2</zorder>
-    <zorder>groupAccounts</zorder>
    </widget>
    <widget class="QGroupBox" name="groupCards">
     <property name="geometry">
