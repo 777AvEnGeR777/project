@@ -10,9 +10,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     state = new StateAccount();
 
-    state->build();
-//    build_accounts();
-//    build_cards();
+    build_accounts();
+    build_cards();
 
     ui->textLogin->setReadOnly(true);
     ui->textPassword->setReadOnly(true);
@@ -97,6 +96,7 @@ void MainWindow::build_accounts(){
 }
 
 void MainWindow::select_card(std::string name){
+    state = new StateCard();
     ui->textNumber->setText(Data::Instance().cardList.find(name.c_str())->second.number.c_str());
     ui->textDate->setText(Data::Instance().cardList.find(name.c_str())->second.date.c_str());
     ui->textCVC->setText(Data::Instance().cardList.find(name.c_str())->second.cvc.c_str());
@@ -130,6 +130,7 @@ void MainWindow::switch_card(QString item){
 //}
 
 void MainWindow::select_account(std::string name){
+    state = new StateAccount();
     ui->textLogin->setText(Data::Instance().accountList.find(name.c_str())->second.login.c_str());
     ui->textPassword->setText(Data::Instance().accountList.find(name.c_str())->second.password.c_str());
     ui->textComment->setText(Data::Instance().accountList.find(name.c_str())->second.comment.c_str());

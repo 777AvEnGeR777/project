@@ -8,6 +8,8 @@
 #include "passwordstrengthchecker.h"
 #include "stateaccount.h"
 #include "statebase.h"
+#include "statecard.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -40,7 +42,7 @@ private slots:
     void passwordStrengthWatcher();
 
 private:
-    StateBase *state;
+    class StateBase *state;
     Ui::MainWindow *ui;
 
     TabTypes currentTab;
