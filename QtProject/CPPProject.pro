@@ -24,14 +24,11 @@ SOURCES += main.cpp\
     passwordstrengthchecker.cpp \
     passwordgenerator.cpp \
     accountform.cpp \
-<<<<<<< HEAD
-    fieldmanager.cpp
-=======
+    fieldmanager.cpp \
     cardform.cpp \
     stateaccount.cpp \
     statebase.cpp \
     statecard.cpp
->>>>>>> refs/remotes/origin/windows
 
 HEADERS  += mainwindow.h \
     authwindow.h \
@@ -45,14 +42,11 @@ HEADERS  += mainwindow.h \
     enums.h \
     passwordgenerator.h \
     accountform.h \
-<<<<<<< HEAD
-    fieldmanager.h
-=======
+    fieldmanager.h \
     cardform.h \
     stateaccount.h \
     statebase.h \
     statecard.h
->>>>>>> refs/remotes/origin/windows
 
 FORMS    += mainwindow.ui \
     authwindow.ui \

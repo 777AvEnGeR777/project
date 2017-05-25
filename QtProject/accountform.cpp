@@ -13,16 +13,10 @@ accountform::accountform(QWidget *parent) :
 
 
     connect(ui->button_save, SIGNAL(clicked(bool)), this, SLOT(save_account()));
-<<<<<<< HEAD
-    connect(ui->button_cardSave, SIGNAL(clicked(bool)), this, SLOT(save_card()));
     connect(ui->button_generate, SIGNAL(clicked(bool)), this, SLOT(generatePassword()));
     connect(ui->button_showpassword, SIGNAL(clicked(bool)), this, SLOT(changePasswordVisibility()));
-=======
-    connect(ui->button_showpassword, SIGNAL(pressed()), this, SLOT(toggleShowPassword()));
-    connect(ui->button_showpassword, SIGNAL(released()), this, SLOT(toggleHidePassword()));
-    connect(ui->button_generate, SIGNAL(clicked(bool)), this, SLOT(generatePassword()));
 
->>>>>>> refs/remotes/origin/windows
+
 }
 
 accountform::~accountform()
@@ -36,23 +30,6 @@ void accountform::generatePassword() {
                                                                   ui->checkbox_digits->isChecked(),
                                                                   ui->checkbox_specials->isChecked());
     ui->field_password->setText(QString(password.c_str()));
-}
-
-<<<<<<< HEAD
-void accountform::set_form_type(std::string set_type){
-    if(set_type == "card"){
-        ui->accountForm->hide();
-        ui->cardForm->show();
-        type=set_type;
-    }
-=======
-void accountform::toggleShowPassword(){
-     ui->field_password->setEchoMode(QLineEdit::Normal);
-}
-
-void accountform::toggleHidePassword(){
-    ui->field_password->setEchoMode(QLineEdit::Password);
->>>>>>> refs/remotes/origin/windows
 }
 
 void accountform::set_account_name(std::string name){
@@ -108,7 +85,6 @@ void accountform::save_account(){
     Data::Instance().Save();
     close();
 }
-<<<<<<< HEAD
 
 void accountform::changePasswordVisibility()
 {
@@ -118,61 +94,4 @@ void accountform::changePasswordVisibility()
         FieldManager::Instance().hideField(ui->field_password);
 }
 
-void accountform::save_card(){
-    std::string name = ui->field_cardName->text().toStdString();
-    std::string number = ui->field_cardNumber->text().toStdString();
-    std::string date = ui->field_cardDate->text().toStdString();
-    std::string cvc = ui->field_cardCVC->text().toStdString();
-    std::string owner = ui->field_cardOwner->text().toStdString();
-    std::string pin = ui->field_cardPin->text().toStdString();
-    std::string secret = ui->field_cardSecret->text().toStdString();
-    std::string phone = ui->field_cardPhone->text().toStdString();
 
-    Card card(name, number, date, cvc, owner, pin, secret, phone);
-
-    if(name.empty()){
-        QMessageBox::warning(nullptr, "Empty card name", "\nCard name cannot be empty!\n",
-                             QMessageBox::Ok);
-        return;
-    }
-
-    if(number.empty()){
-        QMessageBox::warning(nullptr, "Empty card number!", "\nPlease, fill the \"Card number\" field!\n",
-                             QMessageBox::Ok);
-        return;
-    }
-
-    if(Data::Instance().cardList.find(name) != Data::Instance().cardList.end()){
-        if(QMessageBox::warning(nullptr, "Card name is already exist!",
-                                "\nThis card name is already exist!\nDo you want to override it?\n",
-                                QMessageBox::Yes, QMessageBox::No) == QMessageBox::Yes){
-            Data::Instance().cardList.find(account_name)->second.number = number;
-            Data::Instance().cardList.find(account_name)->second.date = date;
-            Data::Instance().cardList.find(account_name)->second.cvc = cvc;
-            Data::Instance().cardList.find(account_name)->second.owner = owner;
-            Data::Instance().cardList.find(account_name)->second.pin = pin;
-            Data::Instance().cardList.find(account_name)->second.secret = secret;
-            Data::Instance().cardList.find(account_name)->second.phone = phone;
-            Data::Instance().Save();
-            close();
-        }
-        return;
-    }
-
-    if(account_name == ""){
-        Data::Instance().cardList.insert(std::make_pair(name, card));
-    }else{
-        Data::Instance().cardList.find(account_name)->second.number = number;
-        Data::Instance().cardList.find(account_name)->second.date = date;
-        Data::Instance().cardList.find(account_name)->second.cvc = cvc;
-        Data::Instance().cardList.find(account_name)->second.owner = owner;
-        Data::Instance().cardList.find(account_name)->second.pin = pin;
-        Data::Instance().cardList.find(account_name)->second.secret = secret;
-        Data::Instance().cardList.find(account_name)->second.phone = phone;
-    }
-
-    Data::Instance().Save();
-    close();
-}
-=======
->>>>>>> refs/remotes/origin/windows
