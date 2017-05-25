@@ -10,6 +10,24 @@
     <height>280</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>490</width>
+    <height>280</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>490</width>
+    <height>280</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Password Manager</string>
   </property>
@@ -324,6 +342,112 @@
       </rect>
      </property>
     </widget>
+    <widget class="QPushButton" name="copyLogin">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>50</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#copyLogin {
+background-color: rgba(255, 255, 255, 0);
+}
+#copyLogin:pressed {
+background-color: rgba(50, 50, 50, 50);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resources.qrc">
+       <normaloff>:/images/copy.png</normaloff>:/images/copy.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="copyPassword">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>90</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#copyPassword {
+background-color: rgba(255, 255, 255, 0);
+}
+#copyPassword:pressed {
+background-color: rgba(50, 50, 50, 50);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resources.qrc">
+       <normaloff>:/images/copy.png</normaloff>:/images/copy.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="eyePassword">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>90</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#eyePassword {
+	background-color: transparent;
+}
+#eyePassword:pressed {	
+	background-color: transparent;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resources.qrc">
+       <normaloff>:/images/eye_closed.png</normaloff>
+       <normalon>:/images/eye_opened.png</normalon>:/images/eye_closed.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
    </widget>
    <widget class="QGroupBox" name="groupCards">
     <property name="geometry">
@@ -350,6 +474,42 @@
       <string>Key</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="eyePin">
+     <property name="geometry">
+      <rect>
+       <x>127</x>
+       <y>170</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#eyePin {
+        background-color: transparent;
+}
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resources.qrc">
+       <normaloff>:/images/eye_closed.png</normaloff>
+       <normalon>:/images/eye_opened.png</normalon>:/images/eye_closed.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
     <widget class="QComboBox" name="selectCard">
      <property name="geometry">
       <rect>
@@ -371,6 +531,40 @@
      </property>
      <property name="text">
       <string>Number</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="copyNumber">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>50</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#copyNumber {
+background-color: rgba(255, 255, 255, 0);
+}
+#copyNumber:pressed {
+background-color: rgba(50, 50, 50, 50);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resources.qrc">
+       <normaloff>:/images/copy.png</normaloff>:/images/copy.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
      </property>
     </widget>
     <widget class="QLineEdit" name="textNumber">
@@ -496,7 +690,7 @@
       </rect>
      </property>
      <property name="echoMode">
-      <enum>QLineEdit::Normal</enum>
+      <enum>QLineEdit::Password</enum>
      </property>
     </widget>
     <widget class="QLabel" name="label_11">
@@ -522,7 +716,7 @@
       </rect>
      </property>
      <property name="echoMode">
-      <enum>QLineEdit::Normal</enum>
+      <enum>QLineEdit::Password</enum>
      </property>
     </widget>
     <widget class="QLabel" name="label_12">
@@ -590,6 +784,134 @@
       <string>Delete</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="copyOwner">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>130</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#copyOwner {
+background-color: rgba(255, 255, 255, 0);
+}
+#copyOwner:pressed {
+background-color: rgba(50, 50, 50, 50);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resources.qrc">
+       <normaloff>:/images/copy.png</normaloff>:/images/copy.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="copyDate">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>90</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#copyDate {
+background-color: rgba(255, 255, 255, 0);
+}
+#copyDate:pressed {
+background-color: rgba(50, 50, 50, 50);
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resources.qrc">
+       <normaloff>:/images/copy.png</normaloff>:/images/copy.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="eyeSecret">
+     <property name="geometry">
+      <rect>
+       <x>298</x>
+       <y>170</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#eyeSecret {
+        background-color: transparent;
+}
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resources.qrc">
+       <normaloff>:/images/eye_closed.png</normaloff>
+       <normalon>:/images/eye_opened.png</normalon>:/images/eye_closed.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <zorder>label_5</zorder>
+    <zorder>selectCard</zorder>
+    <zorder>label_6</zorder>
+    <zorder>textNumber</zorder>
+    <zorder>textDate</zorder>
+    <zorder>label_7</zorder>
+    <zorder>textCVC</zorder>
+    <zorder>label_8</zorder>
+    <zorder>label_9</zorder>
+    <zorder>textOwner</zorder>
+    <zorder>label_10</zorder>
+    <zorder>textPin</zorder>
+    <zorder>label_11</zorder>
+    <zorder>textSecret</zorder>
+    <zorder>label_12</zorder>
+    <zorder>textSupportPhone</zorder>
+    <zorder>cardCreate</zorder>
+    <zorder>cardEdit</zorder>
+    <zorder>cardDelete</zorder>
+    <zorder>copyNumber</zorder>
+    <zorder>copyOwner</zorder>
+    <zorder>copyDate</zorder>
+    <zorder>eyePin</zorder>
+    <zorder>eyeSecret</zorder>
    </widget>
    <widget class="QGroupBox" name="groupSettings">
     <property name="geometry">
@@ -603,6 +925,40 @@
     <property name="title">
      <string/>
     </property>
+    <widget class="QPushButton" name="eyeOldMaster">
+     <property name="geometry">
+      <rect>
+       <x>308</x>
+       <y>40</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resources.qrc">
+       <normaloff>:/images/eye_closed.png</normaloff>
+       <normalon>:/images/eye_opened.png</normalon>:/images/eye_closed.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
     <widget class="QLineEdit" name="textConfirmMaster">
      <property name="geometry">
       <rect>
@@ -742,7 +1098,7 @@
     <widget class="QLabel" name="labelPasswordStrength">
      <property name="geometry">
       <rect>
-       <x>115</x>
+       <x>108</x>
        <y>150</y>
        <width>111</width>
        <height>16</height>
@@ -758,6 +1114,87 @@
       <string/>
      </property>
     </widget>
+    <widget class="QPushButton" name="eyeNewMaster">
+     <property name="geometry">
+      <rect>
+       <x>308</x>
+       <y>80</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resources.qrc">
+       <normaloff>:/images/eye_closed.png</normaloff>
+       <normalon>:/images/eye_opened.png</normalon>:/images/eye_closed.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="eyeConfirmMaster">
+     <property name="geometry">
+      <rect>
+       <x>308</x>
+       <y>120</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: transparent;
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="resources.qrc">
+       <normaloff>:/images/eye_closed.png</normaloff>
+       <normalon>:/images/eye_opened.png</normalon>:/images/eye_closed.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <zorder>textConfirmMaster</zorder>
+    <zorder>changeMaster</zorder>
+    <zorder>label_14</zorder>
+    <zorder>textNewMaster</zorder>
+    <zorder>label_15</zorder>
+    <zorder>label_16</zorder>
+    <zorder>textOldMaster</zorder>
+    <zorder>label_13</zorder>
+    <zorder>label_17</zorder>
+    <zorder>labelPasswordStrength</zorder>
+    <zorder>eyeOldMaster</zorder>
+    <zorder>eyeNewMaster</zorder>
+    <zorder>eyeConfirmMaster</zorder>
    </widget>
    <zorder>groupAccounts</zorder>
    <zorder>group_controls</zorder>
@@ -793,7 +1230,9 @@
   <tabstop>textConfirmMaster</tabstop>
   <tabstop>changeMaster</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
  <buttongroups>
   <buttongroup name="buttonGroup"/>

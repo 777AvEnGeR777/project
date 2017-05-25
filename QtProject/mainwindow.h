@@ -37,6 +37,18 @@ private slots:
     void changeMaster();
     void passwordStrengthWatcher();
 
+    void copyLogin();
+    void copyPassword();
+    void copyCardNumber();
+    void copyOwner();
+    void copyDate();
+
+    void changePasswordVisibility();
+    void changePinVisibility();
+    void changeSecretVisibility();
+    void changeOldMasterVisibility();
+    void changeNewMasterVisibility();
+    void changeConfirmMasterVisibility();
 private:
     Ui::MainWindow *ui;
 

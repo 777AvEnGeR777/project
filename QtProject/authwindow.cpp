@@ -13,6 +13,10 @@ AuthWindow::AuthWindow(QWidget *parent) :
     connect(ui->buttonCreateMaster, SIGNAL(clicked(bool)), this, SLOT(CreateMaster()));
     connect(ui->editNewMaster, SIGNAL(textChanged(QString)), this, SLOT(PasswordStrengthWatcher()));
 
+    connect(ui->eyeMaster, SIGNAL(clicked(bool)), this, SLOT(changeMasterVisibility()));
+    connect(ui->eyeNewMaster, SIGNAL(clicked(bool)), this, SLOT(changeNewMasterVisibility()));
+    connect(ui->eyeConfirmMaster, SIGNAL(clicked(bool)), this, SLOT(changeMasterConfirmVisibility()));
+
     Data::Instance().GetMaster();
     std::string masterHash = Data::Instance().masterHash;
     if(masterHash.empty())
@@ -111,4 +115,28 @@ void AuthWindow::PasswordStrengthWatcher()
         default:
             break;
     }
+}
+
+void AuthWindow::changeMasterVisibility()
+{
+    if(ui->eyeMaster->isChecked())
+        FieldManager::Instance().showField(ui->editMaster);
+    else
+        FieldManager::Instance().hideField(ui->editMaster);
+}
+
+void AuthWindow::changeNewMasterVisibility()
+{
+    if(ui->eyeNewMaster->isChecked())
+        FieldManager::Instance().showField(ui->editNewMaster);
+    else
+        FieldManager::Instance().hideField(ui->editNewMaster);
+}
+
+void AuthWindow::changeMasterConfirmVisibility()
+{
+    if(ui->eyeConfirmMaster->isChecked())
+        FieldManager::Instance().showField(ui->editConfirmMaster);
+    else
+        FieldManager::Instance().hideField(ui->editConfirmMaster);
 }

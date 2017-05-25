@@ -46,6 +46,36 @@
    <property name="title">
     <string/>
    </property>
+   <widget class="QPushButton" name="eyeMaster">
+    <property name="geometry">
+     <rect>
+      <x>236</x>
+      <y>60</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="resources.qrc">
+      <normaloff>:/images/eye_closed.png</normaloff>
+      <normalon>:/images/eye_opened.png</normalon>:/images/eye_closed.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>25</width>
+      <height>25</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+   </widget>
    <widget class="QLabel" name="labelMaster">
     <property name="geometry">
      <rect>
@@ -102,6 +132,10 @@
      <enum>QLineEdit::Password</enum>
     </property>
    </widget>
+   <zorder>labelMaster</zorder>
+   <zorder>buttonLogin</zorder>
+   <zorder>editMaster</zorder>
+   <zorder>eyeMaster</zorder>
   </widget>
   <widget class="QGroupBox" name="groupCreateMaster">
    <property name="enabled">
@@ -246,6 +280,66 @@
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="eyeConfirmMaster">
+    <property name="geometry">
+     <rect>
+      <x>236</x>
+      <y>80</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="resources.qrc">
+      <normaloff>:/images/eye_closed.png</normaloff>
+      <normalon>:/images/eye_opened.png</normalon>:/images/eye_closed.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>25</width>
+      <height>25</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="eyeNewMaster">
+    <property name="geometry">
+     <rect>
+      <x>236</x>
+      <y>30</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="resources.qrc">
+      <normaloff>:/images/eye_closed.png</normaloff>
+      <normalon>:/images/eye_opened.png</normalon>:/images/eye_closed.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>25</width>
+      <height>25</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
  </widget>
  <tabstops>
@@ -255,6 +349,8 @@
   <tabstop>editMaster</tabstop>
   <tabstop>buttonLogin</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

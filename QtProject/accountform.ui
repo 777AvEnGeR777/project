@@ -239,14 +239,31 @@
    <widget class="QPushButton" name="button_showpassword">
     <property name="geometry">
      <rect>
-      <x>241</x>
+      <x>258</x>
       <y>130</y>
-      <width>40</width>
+      <width>20</width>
       <height>20</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;</string>
+    </property>
     <property name="text">
-     <string>Show</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="resources.qrc">
+      <normaloff>:/images/eye_closed.png</normaloff>
+      <normalon>:/images/eye_opened.png</normalon>:/images/eye_closed.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>24</width>
+      <height>24</height>
+     </size>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
@@ -519,6 +536,8 @@
   <tabstop>button_generate</tabstop>
   <tabstop>spin_password_length</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

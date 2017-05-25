@@ -6,6 +6,7 @@
 #include "enums.h"
 #include "Data.h"
 #include "passwordstrengthchecker.h"
+#include "fieldmanager.h"
 
 namespace Ui {
 class AuthWindow;
@@ -24,6 +25,10 @@ private slots:
     void Authentication();
     void CreateMaster();
     void PasswordStrengthWatcher();
+
+    void changeMasterVisibility();
+    void changeNewMasterVisibility();
+    void changeMasterConfirmVisibility();
 
 private:
     Ui::AuthWindow *ui;

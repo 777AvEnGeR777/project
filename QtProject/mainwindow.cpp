@@ -42,6 +42,19 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->changeMaster, SIGNAL(clicked(bool)), this, SLOT(changeMaster()));
     connect(ui->textNewMaster, SIGNAL(textChanged(QString)), this, SLOT(passwordStrengthWatcher()));
+
+    connect(ui->copyLogin, SIGNAL(clicked(bool)), this, SLOT(copyLogin()));
+    connect(ui->copyPassword, SIGNAL(clicked(bool)), this, SLOT(copyPassword()));
+    connect(ui->copyNumber, SIGNAL(clicked(bool)), this, SLOT(copyCardNumber()));
+    connect(ui->copyOwner, SIGNAL(clicked(bool)), this, SLOT(copyOwner()));
+    connect(ui->copyDate, SIGNAL(clicked(bool)), this, SLOT(copyDate()));
+
+    connect(ui->eyePassword, SIGNAL(clicked(bool)), this, SLOT(changePasswordVisibility()));
+    connect(ui->eyePin, SIGNAL(clicked(bool)), this, SLOT(changePinVisibility()));
+    connect(ui->eyeSecret, SIGNAL(clicked(bool)), this, SLOT(changeSecretVisibility()));
+    connect(ui->eyeOldMaster, SIGNAL(clicked(bool)), this, SLOT(changeOldMasterVisibility()));
+    connect(ui->eyeNewMaster, SIGNAL(clicked(bool)), this, SLOT(changeNewMasterVisibility()));
+    connect(ui->eyeConfirmMaster, SIGNAL(clicked(bool)), this, SLOT(changeConfirmMasterVisibility()));
 }
 
 MainWindow::~MainWindow()
@@ -260,4 +273,76 @@ void MainWindow::passwordStrengthWatcher(){
         default:
             break;
     }
+}
+
+void MainWindow::copyLogin(){
+    FieldManager::Instance().copyField(ui->textLogin);
+}
+
+void MainWindow::copyPassword()
+{
+    FieldManager::Instance().copyField(ui->textPassword);
+}
+
+void MainWindow::copyCardNumber()
+{
+    FieldManager::Instance().copyField(ui->textNumber);
+}
+
+void MainWindow::copyOwner()
+{
+    FieldManager::Instance().copyField(ui->textOwner);
+}
+
+void MainWindow::copyDate()
+{
+    FieldManager::Instance().copyField(ui->textDate);
+}
+
+void MainWindow::changePasswordVisibility()
+{
+    if(ui->eyePassword->isChecked())
+        FieldManager::Instance().showField(ui->textPassword);
+    else
+        FieldManager::Instance().hideField(ui->textPassword);
+}
+
+void MainWindow::changePinVisibility()
+{
+    if(ui->eyePin->isChecked())
+        FieldManager::Instance().showField(ui->textPin);
+    else
+        FieldManager::Instance().hideField(ui->textPin);
+}
+
+void MainWindow::changeSecretVisibility()
+{
+    if(ui->eyeSecret->isChecked())
+        FieldManager::Instance().showField(ui->textSecret);
+    else
+        FieldManager::Instance().hideField(ui->textSecret);
+}
+
+void MainWindow::changeOldMasterVisibility()
+{
+    if(ui->eyeOldMaster->isChecked())
+        FieldManager::Instance().showField(ui->textOldMaster);
+    else
+        FieldManager::Instance().hideField(ui->textOldMaster);
+}
+
+void MainWindow::changeNewMasterVisibility()
+{
+    if(ui->eyeNewMaster->isChecked())
+        FieldManager::Instance().showField(ui->textNewMaster);
+    else
+        FieldManager::Instance().hideField(ui->textNewMaster);
+}
+
+void MainWindow::changeConfirmMasterVisibility()
+{
+    if(ui->eyeConfirmMaster->isChecked())
+        FieldManager::Instance().showField(ui->textConfirmMaster);
+    else
+        FieldManager::Instance().hideField(ui->textConfirmMaster);
 }

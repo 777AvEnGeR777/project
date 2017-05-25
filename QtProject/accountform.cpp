@@ -13,11 +13,9 @@ accountform::accountform(QWidget *parent) :
     ui->cardForm->hide();
 
     connect(ui->button_save, SIGNAL(clicked(bool)), this, SLOT(save_account()));
-    connect(ui->button_showpassword, SIGNAL(pressed()), this, SLOT(toggleShowPassword()));
-    connect(ui->button_showpassword, SIGNAL(released()), this, SLOT(toggleHidePassword()));
-    connect(ui->button_generate, SIGNAL(clicked(bool)), this, SLOT(generatePassword()));
-
     connect(ui->button_cardSave, SIGNAL(clicked(bool)), this, SLOT(save_card()));
+    connect(ui->button_generate, SIGNAL(clicked(bool)), this, SLOT(generatePassword()));
+    connect(ui->button_showpassword, SIGNAL(clicked(bool)), this, SLOT(changePasswordVisibility()));
 }
 
 accountform::~accountform()
@@ -31,14 +29,6 @@ void accountform::generatePassword() {
                                                                   ui->checkbox_digits->isChecked(),
                                                                   ui->checkbox_specials->isChecked());
     ui->field_password->setText(QString(password.c_str()));
-}
-
-void accountform::toggleShowPassword(){
-     ui->field_password->setEchoMode(QLineEdit::Normal);
-}
-
-void accountform::toggleHidePassword(){
-    ui->field_password->setEchoMode(QLineEdit::Password);
 }
 
 void accountform::set_form_type(std::string set_type){
@@ -113,6 +103,14 @@ void accountform::save_account(){
 
     Data::Instance().Save();
     close();
+}
+
+void accountform::changePasswordVisibility()
+{
+    if(ui->button_showpassword->isChecked())
+        FieldManager::Instance().showField(ui->field_password);
+    else
+        FieldManager::Instance().hideField(ui->field_password);
 }
 
 void accountform::save_card(){

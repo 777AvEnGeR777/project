@@ -7,6 +7,7 @@
 #include "Account.h"
 #include "Data.h"
 #include "passwordgenerator.h"
+#include "fieldmanager.h"
 
 namespace Ui {
 class accountform;
@@ -34,8 +35,7 @@ private slots:
 
     void save_card();
     void save_account();
-    void toggleShowPassword();
-    void toggleHidePassword();
+    void changePasswordVisibility();
     void generatePassword();
 
 };
