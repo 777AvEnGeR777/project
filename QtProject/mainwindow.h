@@ -3,6 +3,7 @@
 
 #include "accountform.h"
 #include <QMainWindow>
+#include <QString>
 #include <QMessageBox>
 #include "enums.h"
 #include "passwordstrengthchecker.h"
@@ -26,8 +27,8 @@ public:
 private slots:
     void on_tabWidget_destroyed();
 
-    void add_account();
-    void edit_account();
+    void add();
+    void edit();
     void switch_account(QString item);
 
 //    void add_card();
