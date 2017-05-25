@@ -3,9 +3,14 @@
 
 #include "accountform.h"
 #include <QMainWindow>
+#include <QString>
 #include <QMessageBox>
 #include "enums.h"
 #include "passwordstrengthchecker.h"
+#include "stateaccount.h"
+#include "statebase.h"
+#include "statecard.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -22,12 +27,11 @@ public:
 private slots:
     void on_tabWidget_destroyed();
 
-    void add_account();
-    void edit_account();
+    void add();
+    void edit();
     void switch_account(QString item);
 
-    void add_card();
-    void edit_card();
+
     void switch_card(QString item);
 
     void toggleAccountsTab();
@@ -50,11 +54,13 @@ private slots:
     void changeNewMasterVisibility();
     void changeConfirmMasterVisibility();
 private:
+    class StateBase *state;
     Ui::MainWindow *ui;
 
     TabTypes currentTab;
 
     void hide_tab();
+    void rebuild();
     void build_accounts();
     void build_cards();
 

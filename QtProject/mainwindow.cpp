@@ -5,10 +5,12 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+
     ui->setupUi(this);
 
-    build_accounts();
-    build_cards();
+    state = new StateAccount;
+
+    rebuild();
 
     ui->textLogin->setReadOnly(true);
     ui->textPassword->setReadOnly(true);
@@ -32,12 +34,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->toggleCards, SIGNAL(clicked(bool)), this, SLOT(toggleCardsTab()));
     connect(ui->toggleSettings, SIGNAL(clicked(bool)), this, SLOT(toggleSettingsTab()));
 
-    connect(ui->accountCreate, SIGNAL(clicked(bool)), this, SLOT(add_account()));
-    connect(ui->accountEdit, SIGNAL(clicked(bool)), this, SLOT(edit_account()));
+    connect(ui->accountCreate, SIGNAL(clicked(bool)), this, SLOT(add()));
+    connect(ui->accountEdit, SIGNAL(clicked(bool)), this, SLOT(edit()));
     connect(ui->selectAccount, SIGNAL(currentIndexChanged(QString)),this, SLOT(switch_account(QString)));
 
-    connect(ui->cardCreate, SIGNAL(clicked(bool)), this, SLOT(add_card()));
-    connect(ui->cardEdit, SIGNAL(clicked(bool)), this, SLOT(edit_card()));
+    connect(ui->cardCreate, SIGNAL(clicked(bool)), this, SLOT(add()));
+    connect(ui->cardEdit, SIGNAL(clicked(bool)), this, SLOT(edit()));
     connect(ui->selectCard, SIGNAL(currentIndexChanged(QString)), this, SLOT(switch_card(QString)));
 
     connect(ui->changeMaster, SIGNAL(clicked(bool)), this, SLOT(changeMaster()));
@@ -65,6 +67,24 @@ MainWindow::~MainWindow()
 void MainWindow::on_tabWidget_destroyed()
 {
 
+}
+
+void MainWindow::rebuild(){
+    build_accounts();
+    build_cards();
+}
+
+void MainWindow::edit(){
+    QString key = ui->selectAccount->currentText();
+    if(currentTab == CARDS)
+        key = ui->selectCard->currentText();
+    state->edit(key);
+    rebuild();
+}
+
+void MainWindow::add(){
+    state->create();
+    rebuild();
 }
 
 void MainWindow::build_cards(){
@@ -129,15 +149,6 @@ void MainWindow::switch_card(QString item){
     }
 }
 
-void MainWindow::edit_card(){
-    accountform *account_form = new accountform;
-    account_form->set_form_type("card");
-    account_form->set_account_name(ui->selectCard->currentText().toUtf8().constData());
-
-    account_form->exec();
-    build_cards();
-}
-
 void MainWindow::select_account(std::string name){
     ui->textLogin->setText(Data::Instance().accountList.find(name.c_str())->second.login.c_str());
     ui->textPassword->setText(Data::Instance().accountList.find(name.c_str())->second.password.c_str());
@@ -152,28 +163,6 @@ void MainWindow::switch_account(QString item){
         ui->textPassword->clear();
         ui->textComment->clear();
     }
-}
-
-void MainWindow::edit_account(){
-    accountform *account_form = new accountform;
-
-    account_form->set_account_name(ui->selectAccount->currentText().toUtf8().constData());
-
-    account_form->exec();
-    build_accounts();
-}
-
-void MainWindow::add_account(){
-    accountform *account_form = new accountform;
-    account_form->exec();
-    build_accounts();
-}
-
-void MainWindow::add_card(){
-    accountform *account_form = new accountform;
-    account_form->set_form_type("card");
-    account_form->exec();
-    build_cards();
 }
 
 void MainWindow::hide_tab(){
@@ -194,6 +183,7 @@ void MainWindow::hide_tab(){
 
 void MainWindow::toggleAccountsTab(){
     hide_tab();
+    state = new StateAccount;
     ui->groupAccounts->show();
     currentTab = ACCOUNTS;
 }
@@ -201,6 +191,7 @@ void MainWindow::toggleAccountsTab(){
 void MainWindow::toggleCardsTab(){
     hide_tab();
     ui->groupCards->show();
+    state = new StateCard;
     currentTab = CARDS;
 }
 

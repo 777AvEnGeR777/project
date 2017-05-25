@@ -10,12 +10,19 @@ accountform::accountform(QWidget *parent) :
 
     ui->field_password->setEchoMode(QLineEdit::Password);
 
-    ui->cardForm->hide();
+
 
     connect(ui->button_save, SIGNAL(clicked(bool)), this, SLOT(save_account()));
+<<<<<<< HEAD
     connect(ui->button_cardSave, SIGNAL(clicked(bool)), this, SLOT(save_card()));
     connect(ui->button_generate, SIGNAL(clicked(bool)), this, SLOT(generatePassword()));
     connect(ui->button_showpassword, SIGNAL(clicked(bool)), this, SLOT(changePasswordVisibility()));
+=======
+    connect(ui->button_showpassword, SIGNAL(pressed()), this, SLOT(toggleShowPassword()));
+    connect(ui->button_showpassword, SIGNAL(released()), this, SLOT(toggleHidePassword()));
+    connect(ui->button_generate, SIGNAL(clicked(bool)), this, SLOT(generatePassword()));
+
+>>>>>>> refs/remotes/origin/windows
 }
 
 accountform::~accountform()
@@ -31,33 +38,30 @@ void accountform::generatePassword() {
     ui->field_password->setText(QString(password.c_str()));
 }
 
+<<<<<<< HEAD
 void accountform::set_form_type(std::string set_type){
     if(set_type == "card"){
         ui->accountForm->hide();
         ui->cardForm->show();
         type=set_type;
     }
+=======
+void accountform::toggleShowPassword(){
+     ui->field_password->setEchoMode(QLineEdit::Normal);
+}
+
+void accountform::toggleHidePassword(){
+    ui->field_password->setEchoMode(QLineEdit::Password);
+>>>>>>> refs/remotes/origin/windows
 }
 
 void accountform::set_account_name(std::string name){
     account_name = name;
-    if(type == "card"){
-        ui->field_cardName->setText(name.c_str());
-        ui->field_cardName->setEnabled(false);
-        ui->field_cardCVC->setText(Data::Instance().cardList.find(name.c_str())->second.cvc.c_str());
-        ui->field_cardDate->setText(Data::Instance().cardList.find(name.c_str())->second.date.c_str());
-        ui->field_cardNumber->setText(Data::Instance().cardList.find(name.c_str())->second.number.c_str());
-        ui->field_cardOwner->setText(Data::Instance().cardList.find(name.c_str())->second.owner.c_str());
-        ui->field_cardPhone->setText(Data::Instance().cardList.find(name.c_str())->second.phone.c_str());
-        ui->field_cardSecret->setText(Data::Instance().cardList.find(name.c_str())->second.secret.c_str());
-        ui->field_cardPin->setText(Data::Instance().cardList.find(name.c_str())->second.pin.c_str());
-    }else{
-        ui->field_accountName->setText(name.c_str());
-        ui->field_accountName->setEnabled(false);
-        ui->field_comment->setText(Data::Instance().accountList.find(name.c_str())->second.comment.c_str());
-        ui->field_login->setText(Data::Instance().accountList.find(name.c_str())->second.login.c_str());
-        ui->field_password->setText(Data::Instance().accountList.find(name.c_str())->second.password.c_str());
-    }
+    ui->field_accountName->setText(name.c_str());
+    ui->field_accountName->setEnabled(false);
+    ui->field_comment->setText(Data::Instance().accountList.find(name.c_str())->second.comment.c_str());
+    ui->field_login->setText(Data::Instance().accountList.find(name.c_str())->second.login.c_str());
+    ui->field_password->setText(Data::Instance().accountList.find(name.c_str())->second.password.c_str());
 }
 
 
@@ -104,6 +108,7 @@ void accountform::save_account(){
     Data::Instance().Save();
     close();
 }
+<<<<<<< HEAD
 
 void accountform::changePasswordVisibility()
 {
@@ -169,3 +174,5 @@ void accountform::save_card(){
     Data::Instance().Save();
     close();
 }
+=======
+>>>>>>> refs/remotes/origin/windows

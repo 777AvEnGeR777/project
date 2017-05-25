@@ -24,7 +24,14 @@ SOURCES += main.cpp\
     passwordstrengthchecker.cpp \
     passwordgenerator.cpp \
     accountform.cpp \
+<<<<<<< HEAD
     fieldmanager.cpp
+=======
+    cardform.cpp \
+    stateaccount.cpp \
+    statebase.cpp \
+    statecard.cpp
+>>>>>>> refs/remotes/origin/windows
 
 HEADERS  += mainwindow.h \
     authwindow.h \
@@ -38,11 +45,19 @@ HEADERS  += mainwindow.h \
     enums.h \
     passwordgenerator.h \
     accountform.h \
+<<<<<<< HEAD
     fieldmanager.h
+=======
+    cardform.h \
+    stateaccount.h \
+    statebase.h \
+    statecard.h
+>>>>>>> refs/remotes/origin/windows
 
 FORMS    += mainwindow.ui \
     authwindow.ui \
-    accountform.ui
+    accountform.ui \
+    cardform.ui
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/libs/release/ -lcryptlib
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/libs/debug/ -lcryptlib
