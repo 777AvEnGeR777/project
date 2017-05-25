@@ -2,6 +2,9 @@
 #define CARDFORM_H
 
 #include <QDialog>
+#include <Data.h>
+#include <QMessageBox>
+#include <Card.h>
 
 namespace Ui {
 class cardform;
@@ -18,6 +21,10 @@ public:
 
 private:
     Ui::cardform *ui;
+    std::string account_name;
+
+private slots:
+    void save_card();
 };
 
 #endif // CARDFORM_H

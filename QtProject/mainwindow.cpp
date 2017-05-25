@@ -10,8 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     state = new StateAccount;
 
-    build_accounts();
-    build_cards();
+    rebuild();
 
     ui->textLogin->setReadOnly(true);
     ui->textPassword->setReadOnly(true);
@@ -55,6 +54,24 @@ MainWindow::~MainWindow()
 void MainWindow::on_tabWidget_destroyed()
 {
 
+}
+
+void MainWindow::rebuild(){
+    build_accounts();
+    build_cards();
+}
+
+void MainWindow::edit(){
+    QString key = ui->selectAccount->currentText();
+    if(currentTab == CARDS)
+        key = ui->selectCard->currentText();
+    state->edit(key);
+    rebuild();
+}
+
+void MainWindow::add(){
+    state->create();
+    rebuild();
 }
 
 void MainWindow::build_cards(){
@@ -134,26 +151,6 @@ void MainWindow::switch_account(QString item){
         ui->textComment->clear();
     }
 }
-
-void MainWindow::edit(){
-    QString key = ui->selectAccount->currentText();
-    if(currentTab == CARDS)
-        key = ui->selectCard->currentText();
-    state->edit(key);
-    build_accounts();
-}
-
-void MainWindow::add(){
-    state->create();
-    build_accounts();
-}
-
-//void MainWindow::add_card(){
-//    accountform *account_form = new accountform;
-//    account_form->set_form_type("card");
-//    account_form->exec();
-//    build_cards();
-//}
 
 void MainWindow::hide_tab(){
     switch (currentTab) {
