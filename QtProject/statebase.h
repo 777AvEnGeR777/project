@@ -1,6 +1,7 @@
 #ifndef STATEBASE_H
 #define STATEBASE_H
 #include <QString>
+#include <Data.h>
 
 class StateBase
 {
@@ -10,7 +11,7 @@ public:
     virtual void create();
     virtual void edit(QString key);
     virtual void build();
-    virtual void del();
+    virtual void del(QString key);
     virtual void save();
 
 private:

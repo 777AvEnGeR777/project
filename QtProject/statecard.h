@@ -2,6 +2,7 @@
 #define STATECARD_H
 #include "statebase.h"
 #include "cardform.h"
+#include <Data.h>
 
 class StateCard: public StateBase
 {
@@ -11,7 +12,7 @@ public:
     virtual void create();
     virtual void edit(QString key);
     virtual void build();
-    virtual void del();
+    virtual void del(QString key);
     virtual void save();
 };
 

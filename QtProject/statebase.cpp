@@ -21,6 +21,6 @@ void StateBase::save(){
 
 }
 
-void StateBase::del(){
+void StateBase::del(QString key){
 
 }
