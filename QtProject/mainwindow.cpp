@@ -5,10 +5,14 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+
     ui->setupUi(this);
 
-    build_accounts();
-    build_cards();
+    state = new StateAccount();
+
+    state->build();
+//    build_accounts();
+//    build_cards();
 
     ui->textLogin->setReadOnly(true);
     ui->textPassword->setReadOnly(true);

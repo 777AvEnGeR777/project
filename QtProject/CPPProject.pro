@@ -24,7 +24,9 @@ SOURCES += main.cpp\
     passwordstrengthchecker.cpp \
     passwordgenerator.cpp \
     accountform.cpp \
-    cardform.cpp
+    cardform.cpp \
+    stateaccount.cpp \
+    statebase.cpp
 
 HEADERS  += mainwindow.h \
     authwindow.h \
@@ -38,7 +40,9 @@ HEADERS  += mainwindow.h \
     enums.h \
     passwordgenerator.h \
     accountform.h \
-    cardform.h
+    cardform.h \
+    stateaccount.h \
+    statebase.h
 
 FORMS    += mainwindow.ui \
     authwindow.ui \
