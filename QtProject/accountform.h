@@ -8,6 +8,7 @@
 #include "Data.h"
 #include "passwordgenerator.h"
 #include "fieldmanager.h"
+#include "passwordstrengthchecker.h"
 
 namespace Ui {
 class accountform;
@@ -34,6 +35,7 @@ private slots:
     void save_account();
     void changePasswordVisibility();
     void generatePassword();
+    void passwordStrengthWatcher();
 
 };
 

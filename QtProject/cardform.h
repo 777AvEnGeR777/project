@@ -5,6 +5,7 @@
 #include <Data.h>
 #include <QMessageBox>
 #include <Card.h>
+#include "fieldmanager.h"
 
 namespace Ui {
 class cardform;
@@ -25,6 +26,8 @@ private:
 
 private slots:
     void save_card();
+    void changeSecretVisibility();
+    void changePinVisibility();
 };
 
 #endif // CARDFORM_H

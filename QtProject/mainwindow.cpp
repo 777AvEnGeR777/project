@@ -14,7 +14,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->textLogin->setReadOnly(true);
     ui->textPassword->setReadOnly(true);
-    ui->textPassword->setEchoMode(QLineEdit::Password);
     ui->textComment->setReadOnly(true);
 
     ui->textCVC->setReadOnly(true);
@@ -34,15 +33,11 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->toggleCards, SIGNAL(clicked(bool)), this, SLOT(toggleCardsTab()));
     connect(ui->toggleSettings, SIGNAL(clicked(bool)), this, SLOT(toggleSettingsTab()));
 
-    connect(ui->accountCreate, SIGNAL(clicked(bool)), this, SLOT(add()));
-    connect(ui->accountEdit, SIGNAL(clicked(bool)), this, SLOT(edit()));
+    connect(ui->recordCreate, SIGNAL(clicked(bool)), this, SLOT(add()));
+    connect(ui->recordEdit, SIGNAL(clicked(bool)), this, SLOT(edit()));
+    connect(ui->recordDelete, SIGNAL(clicked(bool)), this, SLOT(delete_item()));
     connect(ui->selectAccount, SIGNAL(currentIndexChanged(QString)),this, SLOT(switch_account(QString)));
-    connect(ui->accountDelete, SIGNAL(clicked(bool)), this, SLOT(delete_item()));
-
-    connect(ui->cardCreate, SIGNAL(clicked(bool)), this, SLOT(add()));
-    connect(ui->cardEdit, SIGNAL(clicked(bool)), this, SLOT(edit()));
     connect(ui->selectCard, SIGNAL(currentIndexChanged(QString)), this, SLOT(switch_card(QString)));
-    connect(ui->cardDelete, SIGNAL(clicked(bool)), this, SLOT(delete_item()));
 
     connect(ui->changeMaster, SIGNAL(clicked(bool)), this, SLOT(changeMaster()));
     connect(ui->textNewMaster, SIGNAL(textChanged(QString)), this, SLOT(passwordStrengthWatcher()));
@@ -66,11 +61,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_tabWidget_destroyed()
-{
-
-}
-
 void MainWindow::rebuild(){
     build_accounts();
     build_cards();
@@ -85,8 +75,12 @@ void MainWindow::delete_item(){
                              QMessageBox::Ok);
         return;
     }
-    state->del(key);
-    rebuild();
+    if(QMessageBox::information(nullptr, "Confirm delete!",
+                                "\nAre you sure you want to delete this record?\n",
+                                QMessageBox::Yes, QMessageBox::No) == QMessageBox::Yes){
+        state->del(key);
+        rebuild();
+    }
 }
 
 void MainWindow::edit(){
@@ -113,11 +107,11 @@ void MainWindow::build_cards(){
     if(ui->selectCard->currentIndex() > -1){
         std::string currentKey = ui->selectCard->currentText().toUtf8().constData();
         select_card(currentKey);
-        ui->cardEdit->setEnabled(true);
+        ui->recordEdit->setEnabled(true);
     }
     else
     {
-        ui->cardEdit->setEnabled(false);
+        ui->recordEdit->setEnabled(false);
     }
 }
 
@@ -132,11 +126,11 @@ void MainWindow::build_accounts(){
     if(ui->selectAccount->currentIndex() > -1){
         std::string currentKey = ui->selectAccount->currentText().toUtf8().constData();
         select_account(currentKey);
-        ui->accountEdit->setEnabled(true);
+        ui->recordEdit->setEnabled(true);
     }
     else
     {
-        ui->accountEdit->setEnabled(false);
+        ui->recordEdit->setEnabled(false);
     }
 }
 
@@ -190,6 +184,7 @@ void MainWindow::hide_tab(){
         break;
     case SETTINGS:
         ui->groupSettings->hide();
+        ui->groupButtons->show();
         break;
     default:
         break;
@@ -212,6 +207,7 @@ void MainWindow::toggleCardsTab(){
 
 void MainWindow::toggleSettingsTab(){
     hide_tab();
+    ui->groupButtons->hide();
     ui->groupSettings->show();
     currentTab = SETTINGS;
 }

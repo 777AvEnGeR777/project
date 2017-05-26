@@ -208,19 +208,6 @@
     <property name="title">
      <string/>
     </property>
-    <widget class="QPushButton" name="accountDelete">
-     <property name="geometry">
-      <rect>
-       <x>250</x>
-       <y>220</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Delete</string>
-     </property>
-    </widget>
     <widget class="QLineEdit" name="textPassword">
      <property name="geometry">
       <rect>
@@ -230,18 +217,8 @@
        <height>20</height>
       </rect>
      </property>
-    </widget>
-    <widget class="QPushButton" name="accountCreate">
-     <property name="geometry">
-      <rect>
-       <x>70</x>
-       <y>220</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Create</string>
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
      </property>
     </widget>
     <widget class="QComboBox" name="selectAccount">
@@ -306,19 +283,6 @@
       <string>Password</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="accountEdit">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>220</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Edit</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
@@ -338,7 +302,7 @@
        <x>70</x>
        <y>130</y>
        <width>251</width>
-       <height>81</height>
+       <height>101</height>
       </rect>
      </property>
     </widget>
@@ -745,45 +709,6 @@ background-color: rgba(50, 50, 50, 50);
       <enum>QLineEdit::Normal</enum>
      </property>
     </widget>
-    <widget class="QPushButton" name="cardCreate">
-     <property name="geometry">
-      <rect>
-       <x>70</x>
-       <y>240</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Create</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="cardEdit">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>240</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Edit</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="cardDelete">
-     <property name="geometry">
-      <rect>
-       <x>250</x>
-       <y>240</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Delete</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="copyOwner">
      <property name="geometry">
       <rect>
@@ -904,9 +829,6 @@ background-color: rgba(50, 50, 50, 50);
     <zorder>textSecret</zorder>
     <zorder>label_12</zorder>
     <zorder>textSupportPhone</zorder>
-    <zorder>cardCreate</zorder>
-    <zorder>cardEdit</zorder>
-    <zorder>cardDelete</zorder>
     <zorder>copyNumber</zorder>
     <zorder>copyOwner</zorder>
     <zorder>copyDate</zorder>
@@ -1196,10 +1118,76 @@ background-color: rgba(50, 50, 50, 50);
     <zorder>eyeNewMaster</zorder>
     <zorder>eyeConfirmMaster</zorder>
    </widget>
+   <widget class="QGroupBox" name="groupButtons">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>230</y>
+      <width>351</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">#groupButtons {
+	border: 0px;
+}
+</string>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+    <widget class="QPushButton" name="recordCreate">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>12</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+</string>
+     </property>
+     <property name="text">
+      <string>Create</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="recordEdit">
+     <property name="geometry">
+      <rect>
+       <x>158</x>
+       <y>12</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Edit</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="recordDelete">
+     <property name="geometry">
+      <rect>
+       <x>246</x>
+       <y>12</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Delete</string>
+     </property>
+    </widget>
+   </widget>
    <zorder>groupAccounts</zorder>
    <zorder>group_controls</zorder>
    <zorder>groupCards</zorder>
    <zorder>groupSettings</zorder>
+   <zorder>groupButtons</zorder>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
@@ -1211,9 +1199,7 @@ background-color: rgba(50, 50, 50, 50);
   <tabstop>textNumber</tabstop>
   <tabstop>textDate</tabstop>
   <tabstop>textOwner</tabstop>
-  <tabstop>accountCreate</tabstop>
-  <tabstop>accountEdit</tabstop>
-  <tabstop>cardDelete</tabstop>
+  <tabstop>recordDelete</tabstop>
   <tabstop>selectAccount</tabstop>
   <tabstop>textLogin</tabstop>
   <tabstop>textPassword</tabstop>
@@ -1222,9 +1208,8 @@ background-color: rgba(50, 50, 50, 50);
   <tabstop>textPin</tabstop>
   <tabstop>textSecret</tabstop>
   <tabstop>textSupportPhone</tabstop>
-  <tabstop>cardCreate</tabstop>
-  <tabstop>cardEdit</tabstop>
-  <tabstop>accountDelete</tabstop>
+  <tabstop>recordCreate</tabstop>
+  <tabstop>recordEdit</tabstop>
   <tabstop>textOldMaster</tabstop>
   <tabstop>textNewMaster</tabstop>
   <tabstop>textConfirmMaster</tabstop>

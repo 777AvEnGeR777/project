@@ -27,7 +27,6 @@ SOURCES += main.cpp\
     fieldmanager.cpp \
     cardform.cpp \
     stateaccount.cpp \
-    statebase.cpp \
     statecard.cpp
 
 HEADERS  += mainwindow.h \
@@ -45,8 +44,8 @@ HEADERS  += mainwindow.h \
     fieldmanager.h \
     cardform.h \
     stateaccount.h \
-    statebase.h \
-    statecard.h
+    statecard.h \
+    istatebase.h
 
 FORMS    += mainwindow.ui \
     authwindow.ui \

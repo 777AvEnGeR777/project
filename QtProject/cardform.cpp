@@ -8,6 +8,8 @@ cardform::cardform(QWidget *parent) :
     ui->setupUi(this);
 
     connect(ui->button_cardSave, SIGNAL(clicked(bool)), this, SLOT(save_card()));
+    connect(ui->button_show_secret,SIGNAL(clicked(bool)), this, SLOT(changeSecretVisibility()));
+    connect(ui->button_show_pin, SIGNAL(clicked(bool)), this, SLOT(changePinVisibility()));
 }
 
 cardform::~cardform()
@@ -83,5 +85,21 @@ void cardform::save_card(){
 
     Data::Instance().Save();
     close();
+}
+
+void cardform::changeSecretVisibility()
+{
+    if(ui->button_show_secret->isChecked())
+        FieldManager::Instance().showField(ui->field_cardSecret);
+    else
+        FieldManager::Instance().hideField(ui->field_cardSecret);
+}
+
+void cardform::changePinVisibility()
+{
+    if(ui->button_show_pin->isChecked())
+        FieldManager::Instance().showField(ui->field_cardPin);
+    else
+        FieldManager::Instance().hideField(ui->field_cardPin);
 }
 

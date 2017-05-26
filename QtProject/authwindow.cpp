@@ -9,9 +9,9 @@ AuthWindow::AuthWindow(QWidget *parent) :
     authResult = false;
     attempts = 3;
 
-    connect(ui->buttonLogin, SIGNAL(clicked(bool)), this, SLOT(Authentication()));
-    connect(ui->buttonCreateMaster, SIGNAL(clicked(bool)), this, SLOT(CreateMaster()));
-    connect(ui->editNewMaster, SIGNAL(textChanged(QString)), this, SLOT(PasswordStrengthWatcher()));
+    connect(ui->buttonLogin, SIGNAL(clicked(bool)), this, SLOT(authentication()));
+    connect(ui->buttonCreateMaster, SIGNAL(clicked(bool)), this, SLOT(createMaster()));
+    connect(ui->editNewMaster, SIGNAL(textChanged(QString)), this, SLOT(passwordStrengthWatcher()));
 
     connect(ui->eyeMaster, SIGNAL(clicked(bool)), this, SLOT(changeMasterVisibility()));
     connect(ui->eyeNewMaster, SIGNAL(clicked(bool)), this, SLOT(changeNewMasterVisibility()));
@@ -36,7 +36,7 @@ AuthWindow::~AuthWindow()
     delete ui;
 }
 
-void AuthWindow::Authentication()
+void AuthWindow::authentication()
 {
     std::string password = ui->editMaster->text().toStdString();
     std::string passwordHash = Encryptor::Instance().Hash(password);
@@ -61,7 +61,7 @@ void AuthWindow::Authentication()
     }
 }
 
-void AuthWindow::CreateMaster()
+void AuthWindow::createMaster()
 {
     QString password = ui->editNewMaster->text();
     QString confirmPassword = ui->editConfirmMaster->text();
@@ -83,7 +83,7 @@ void AuthWindow::CreateMaster()
 
 }
 
-void AuthWindow::PasswordStrengthWatcher()
+void AuthWindow::passwordStrengthWatcher()
 {
     std::string password = ui->editNewMaster->text().toStdString();
     PasswordStrength strength =PasswordStrengthChecker::Instance().CheckPasswordStrength(password);

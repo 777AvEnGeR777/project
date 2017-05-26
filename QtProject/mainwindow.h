@@ -8,7 +8,7 @@
 #include "enums.h"
 #include "passwordstrengthchecker.h"
 #include "stateaccount.h"
-#include "statebase.h"
+#include "istatebase.h"
 #include "statecard.h"
 
 
@@ -25,8 +25,6 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_tabWidget_destroyed();
-
     void add();
     void edit();
     void delete_item();
@@ -55,7 +53,7 @@ private slots:
     void changeNewMasterVisibility();
     void changeConfirmMasterVisibility();
 private:
-    class StateBase *state;
+    IStateBase *state;
     Ui::MainWindow *ui;
 
     TabTypes currentTab;

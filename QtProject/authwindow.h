@@ -22,9 +22,9 @@ public:
     bool GetResult() { return authResult; }
 
 private slots:
-    void Authentication();
-    void CreateMaster();
-    void PasswordStrengthWatcher();
+    void authentication();
+    void createMaster();
+    void passwordStrengthWatcher();
 
     void changeMasterVisibility();
     void changeNewMasterVisibility();

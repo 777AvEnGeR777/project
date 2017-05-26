@@ -15,7 +15,7 @@ accountform::accountform(QWidget *parent) :
     connect(ui->button_save, SIGNAL(clicked(bool)), this, SLOT(save_account()));
     connect(ui->button_generate, SIGNAL(clicked(bool)), this, SLOT(generatePassword()));
     connect(ui->button_showpassword, SIGNAL(clicked(bool)), this, SLOT(changePasswordVisibility()));
-
+    connect(ui->field_password, SIGNAL(textChanged(QString)), this, SLOT(passwordStrengthWatcher()));
 
 }
 
@@ -30,6 +30,40 @@ void accountform::generatePassword() {
                                                                   ui->checkbox_digits->isChecked(),
                                                                   ui->checkbox_specials->isChecked());
     ui->field_password->setText(QString(password.c_str()));
+}
+
+void accountform::passwordStrengthWatcher()
+{
+    std::string password = ui->field_password->text().toStdString();
+    PasswordStrength strength =PasswordStrengthChecker::Instance().CheckPasswordStrength(password);
+    QPalette pallete = ui->label_password_strength->palette();
+    switch (strength) {
+        case NO_PASSWORD:
+            ui->label_password_strength->clear();
+            break;
+        case WEAK:
+            ui->label_password_strength->setText("Weak");
+            pallete.setColor(ui->label_password_strength->foregroundRole(), Qt::red);
+            ui->label_password_strength->setPalette(pallete);
+            break;
+        case MEDIUM:
+            ui->label_password_strength->setText("Medium");
+            pallete.setColor(ui->label_password_strength->foregroundRole(), QColor(251, 192, 45));
+            ui->label_password_strength->setPalette(pallete);
+            break;
+        case STRONG:
+            ui->label_password_strength->setText("Strong");
+            pallete.setColor(ui->label_password_strength->foregroundRole(), QColor(102, 187, 106));
+            ui->label_password_strength->setPalette(pallete);
+            break;
+        case BEST:
+            ui->label_password_strength->setText("Best");
+            pallete.setColor(ui->label_password_strength->foregroundRole(), Qt::darkGreen);
+            ui->label_password_strength->setPalette(pallete);
+            break;
+        default:
+            break;
+    }
 }
 
 void accountform::set_account_name(std::string name){
