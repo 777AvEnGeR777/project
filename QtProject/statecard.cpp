@@ -19,8 +19,9 @@ void StateCard::build(){
 
 }
 
-void StateCard::del(){
-
+void StateCard::del(QString key){
+    Data::Instance().cardList.erase(Data::Instance().cardList.find(key.toStdString()));
+    Data::Instance().Save();
 }
 
 void StateCard::save(){

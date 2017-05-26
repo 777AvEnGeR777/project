@@ -26,6 +26,7 @@ void StateAccount::save(){
 
 }
 
-void StateAccount::del(){
-
+void StateAccount::del(QString key){
+    Data::Instance().accountList.erase(Data::Instance().accountList.find(key.toStdString()));
+    Data::Instance().Save();
 }

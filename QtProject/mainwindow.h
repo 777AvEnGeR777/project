@@ -29,6 +29,7 @@ private slots:
 
     void add();
     void edit();
+    void delete_item();
     void switch_account(QString item);
 
 

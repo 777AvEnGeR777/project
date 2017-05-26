@@ -37,10 +37,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->accountCreate, SIGNAL(clicked(bool)), this, SLOT(add()));
     connect(ui->accountEdit, SIGNAL(clicked(bool)), this, SLOT(edit()));
     connect(ui->selectAccount, SIGNAL(currentIndexChanged(QString)),this, SLOT(switch_account(QString)));
+    connect(ui->accountDelete, SIGNAL(clicked(bool)), this, SLOT(delete_item()));
 
     connect(ui->cardCreate, SIGNAL(clicked(bool)), this, SLOT(add()));
     connect(ui->cardEdit, SIGNAL(clicked(bool)), this, SLOT(edit()));
     connect(ui->selectCard, SIGNAL(currentIndexChanged(QString)), this, SLOT(switch_card(QString)));
+    connect(ui->cardDelete, SIGNAL(clicked(bool)), this, SLOT(delete_item()));
 
     connect(ui->changeMaster, SIGNAL(clicked(bool)), this, SLOT(changeMaster()));
     connect(ui->textNewMaster, SIGNAL(textChanged(QString)), this, SLOT(passwordStrengthWatcher()));
@@ -72,6 +74,19 @@ void MainWindow::on_tabWidget_destroyed()
 void MainWindow::rebuild(){
     build_accounts();
     build_cards();
+}
+
+void MainWindow::delete_item(){
+    QString key = ui->selectAccount->currentText();
+    if(currentTab == CARDS)
+        key = ui->selectCard->currentText();
+    if(key == ""){
+        QMessageBox::warning(nullptr, "Warning!", "\nNo data to delete\n",
+                             QMessageBox::Ok);
+        return;
+    }
+    state->del(key);
+    rebuild();
 }
 
 void MainWindow::edit(){
